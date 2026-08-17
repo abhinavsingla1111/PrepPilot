@@ -1,0 +1,104 @@
+spring:
+  application:
+    name: preppilot-api
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/preppilot}
+    username: ${DATABASE_USERNAME:preppilot}
+    password: ${DATABASE_PASSWORD}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+  mvc:
+    problemdetails:
+      enabled: true
+  mail:
+    host: ${MAIL_HOST:}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  cloud:
+    openfeign:
+      client:
+        config:
+          resendEmail:
+            connect-timeout: 3000
+            read-timeout: 5000
+  servlet:
+    multipart:
+      max-file-size: 8MB
+      max-request-size: 9MB
+server:
+  port: ${PORT:8080}
+  shutdown: graceful
+  # Set to FRAMEWORK only when every public request passes through a trusted reverse proxy.
+  forward-headers-strategy: ${FORWARD_HEADERS_STRATEGY:NONE}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+app:
+  auth:
+    otp-ttl: 10m
+    session-ttl: 7d
+    max-otp-attempts: 5
+    expose-dev-otp: ${EXPOSE_DEV_OTP:false}
+    token-pepper: ${AUTH_TOKEN_PEPPER}
+    rate-limit:
+      resend-cooldown: ${OTP_RESEND_COOLDOWN:60s}
+      email-window: ${OTP_EMAIL_WINDOW:15m}
+      max-requests-per-email: ${OTP_MAX_REQUESTS_PER_EMAIL:5}
+      ip-window: ${OTP_IP_WINDOW:15m}
+      max-requests-per-ip: ${OTP_MAX_REQUESTS_PER_IP:20}
+    cookie:
+      name: preppilot_session
+      secure: ${AUTH_COOKIE_SECURE:false}
+      same-site: ${AUTH_COOKIE_SAME_SITE:Strict}
+  web:
+    allowed-origins: ${ALLOWED_ORIGINS:http://localhost:5173}
+  mail:
+    enabled: ${MAIL_ENABLED:false}
+    provider: ${MAIL_PROVIDER:smtp}
+    from: ${MAIL_FROM:PrepPilot <no-reply@example.com>}
+    resend:
+      api-key: ${RESEND_API_KEY:}
+  feedback:
+    recipient-email: ${FEEDBACK_RECIPIENT_EMAIL:}
+  public-url: ${APP_PUBLIC_URL:http://localhost:5173}
+  runner:
+    enabled: ${RUNNER_ENABLED:false}
+    worker-token: ${RUNNER_WORKER_TOKEN:}
+    daily-run-limit: ${RUNNER_DAILY_LIMIT:5}
+    minimum-run-interval: ${RUNNER_MINIMUM_INTERVAL:3s}
+    lease-duration: ${RUNNER_LEASE_DURATION:60s}
+    max-attempts: ${RUNNER_MAX_ATTEMPTS:3}
+    email-results: ${RUNNER_EMAIL_RESULTS:false}
+    maximum-diagnostic-characters: ${RUNNER_MAX_DIAGNOSTIC_CHARACTERS:4000}
+    maximum-output-characters: ${RUNNER_MAX_OUTPUT_CHARACTERS:32768}
+
+clients:
+  leetcode:
+    base-url: ${LEETCODE_BASE_URL:https://leetcode.com}
+
+logging:
+  level:
+    com.preppilot.api: INFO

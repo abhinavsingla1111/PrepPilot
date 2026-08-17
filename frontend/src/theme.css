@@ -1,0 +1,238 @@
+/*
+ * PrepPilot theme tokens
+ * ----------------------
+ * - data-color-scheme controls light/dark presentation at runtime.
+ * - data-theme controls the product accent palette at build time.
+ * Components consume semantic tokens only; scheme-specific values stay here.
+ */
+
+:root {
+  color-scheme: dark;
+
+  /* Set from VITE_THEME_TRANSITION_MS during application startup. */
+  --theme-transition-duration: 700ms;
+  --theme-transition-easing: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Surfaces and readable text. */
+  --bg: #000000;
+  --bg-soft: #050507;
+  --panel: #0d0d10;
+  --panel-rgb: 13, 13, 16;
+  --panel-raised: #161618;
+  --panel-hover: #1c1c1e;
+  --surface-header: rgba(0, 0, 0, 0.82);
+  --surface-code: #08080a;
+  --surface-inset: #0b0b0d;
+  --surface-modal: #111114;
+  --overlay-rgb: 255, 255, 255;
+  --line: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(255, 255, 255, 0.17);
+  --text: #f5f5f7;
+  --text-soft: #d2d2d7;
+  --muted: #98989f;
+  --text-subtle: #85858b;
+  --text-faint: #7f7f85;
+  --shadow-color: rgba(0, 0, 0, 0.42);
+
+  /* Code syntax colors are tuned separately from product accents. */
+  --code-text: #e6ecdf;
+  --syntax-comment: #6a9d5b;
+  --syntax-keyword: #6aa6e2;
+  --syntax-number: #b5cea8;
+  --syntax-string: #d99a72;
+  --syntax-type: #4ec9b0;
+  --syntax-function: #dcdcaa;
+  --syntax-variable: #9cdcfe;
+  --syntax-meta: #c0a3e0;
+  --syntax-bracket-0: #ffd75f;
+  --syntax-bracket-1: #64b5ff;
+  --syntax-bracket-2: #72c28a;
+
+  /* Ocean product palette. */
+  --accent: #2997ff;
+  --accent-rgb: 41, 151, 255;
+  --accent-bright: #64b5ff;
+  --accent-dim: #2997ff;
+  --accent-ink: #071218;
+  --action: #0071e3;
+  --action-hover: #0077ed;
+  --action-rgb: 0, 113, 227;
+  --action-ink: #ffffff;
+  --accent-blue: #2997ff;
+  --accent-blue-rgb: 41, 151, 255;
+  --accent-blue-bright: #64b5ff;
+  --accent-blue-dim: #2997ff;
+  --accent-blue-ink: #071218;
+  --accent-cyan: #64d2ff;
+  --accent-cyan-rgb: 100, 210, 255;
+  --accent-cyan-bright: #92e2ff;
+  --accent-cyan-dim: #64d2ff;
+  --accent-cyan-ink: #071218;
+  --accent-green: #72c28a;
+  --accent-green-rgb: 114, 194, 138;
+  --accent-green-bright: #8bd39d;
+  --accent-green-dim: #72c28a;
+  --accent-green-ink: #07130b;
+
+  /* Status colors are semantic and retain their meaning in both schemes. */
+  --easy: #67d69a;
+  --medium: #f2bc5e;
+  --hard: #ff6961;
+
+  /* Scrollbars are neutral and never inherit a section accent. */
+  --scrollbar-thumb: rgba(255, 255, 255, 0.18);
+
+  /* Compatibility aliases for existing component rules. */
+  --green: var(--accent);
+  --green-bright: var(--accent-bright);
+  --green-dim: var(--accent-dim);
+}
+
+/* Reveal the complete incoming color scheme from its semantic direction. */
+@keyframes theme-reveal-left-to-right {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes theme-reveal-right-to-left {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root),
+::view-transition-old(theme-toggle),
+::view-transition-new(theme-toggle) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root),
+::view-transition-old(theme-toggle) {
+  z-index: 1;
+}
+
+::view-transition-new(root),
+::view-transition-new(theme-toggle) {
+  z-index: 2;
+}
+
+:root[data-theme-transition-direction='left-to-right']::view-transition-new(root),
+:root[data-theme-transition-direction='left-to-right']::view-transition-new(theme-toggle) {
+  animation: theme-reveal-left-to-right var(--theme-transition-duration) var(--theme-transition-easing) both;
+}
+
+:root[data-theme-transition-direction='right-to-left']::view-transition-new(root),
+:root[data-theme-transition-direction='right-to-left']::view-transition-new(theme-toggle) {
+  animation: theme-reveal-right-to-left var(--theme-transition-duration) var(--theme-transition-easing) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-new(root),
+  ::view-transition-new(theme-toggle) {
+    animation: none;
+  }
+}
+
+:root[data-color-scheme='light'] {
+  color-scheme: light;
+
+  --bg: #f5f5f7;
+  --bg-soft: #fbfbfd;
+  --panel: #ffffff;
+  --panel-rgb: 255, 255, 255;
+  --panel-raised: #f1f1f3;
+  --panel-hover: #e8e8ed;
+  --surface-header: rgba(251, 251, 253, 0.86);
+  --surface-code: #f1f1f3;
+  --surface-inset: #f7f7f9;
+  --surface-modal: #ffffff;
+  --overlay-rgb: 0, 0, 0;
+  --line: rgba(0, 0, 0, 0.1);
+  --line-strong: rgba(0, 0, 0, 0.18);
+  --text: #1d1d1f;
+  --text-soft: #3a3a3c;
+  --muted: #5f5f63;
+  --text-subtle: #6e6e73;
+  --text-faint: #6e6e73;
+  --shadow-color: rgba(0, 0, 0, 0.14);
+
+  --code-text: #242426;
+  --syntax-comment: #3f7d34;
+  --syntax-keyword: #005bbb;
+  --syntax-number: #795100;
+  --syntax-string: #a33a00;
+  --syntax-type: #007766;
+  --syntax-function: #6f5b00;
+  --syntax-variable: #00658a;
+  --syntax-meta: #765500;
+  --syntax-bracket-0: #765300;
+  --syntax-bracket-1: #005bbb;
+  --syntax-bracket-2: #146b38;
+
+  /* Darker accents maintain contrast on light surfaces. */
+  --accent: #0066cc;
+  --accent-rgb: 0, 102, 204;
+  --accent-bright: #0055b3;
+  --accent-dim: #004c99;
+  --accent-ink: #ffffff;
+  --action: #0071e3;
+  --action-hover: #0077ed;
+  --action-rgb: 0, 113, 227;
+  --action-ink: #ffffff;
+  --accent-blue: #0066cc;
+  --accent-blue-rgb: 0, 102, 204;
+  --accent-blue-bright: #0055b3;
+  --accent-blue-dim: #004c99;
+  --accent-blue-ink: #ffffff;
+  --accent-cyan: #007a99;
+  --accent-cyan-rgb: 0, 122, 153;
+  --accent-cyan-bright: #006b87;
+  --accent-cyan-dim: #005a73;
+  --accent-cyan-ink: #ffffff;
+  --accent-green: #287a45;
+  --accent-green-rgb: 40, 122, 69;
+  --accent-green-bright: #206b3b;
+  --accent-green-dim: #195c32;
+  --accent-green-ink: #ffffff;
+
+  --easy: #237a47;
+  --medium: #825800;
+  --hard: #c9342f;
+  --scrollbar-thumb: rgba(0, 0, 0, 0.22);
+}
+
+/* Optional legacy product palette. It remains accessible in both schemes. */
+:root[data-theme='lime'][data-color-scheme='dark'] {
+  --accent: #c9ff63;
+  --accent-rgb: 201, 255, 99;
+  --accent-bright: #d8ff8d;
+  --accent-dim: #8fbf3f;
+  --accent-ink: #12180d;
+  --action: #b7f34b;
+  --action-hover: #c9ff63;
+  --action-rgb: 183, 243, 75;
+  --action-ink: #12180d;
+}
+
+:root[data-theme='lime'][data-color-scheme='light'] {
+  --accent: #477600;
+  --accent-rgb: 71, 118, 0;
+  --accent-bright: #365c00;
+  --accent-dim: #2f5000;
+  --accent-ink: #ffffff;
+  --action: #477600;
+  --action-hover: #365c00;
+  --action-rgb: 71, 118, 0;
+  --action-ink: #ffffff;
+}

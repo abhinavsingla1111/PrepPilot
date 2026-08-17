@@ -1,0 +1,83 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: preppilot-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - preppilot-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: preppilot-api
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      DATABASE_USERNAME: ${POSTGRES_USER}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
+      AUTH_TOKEN_PEPPER: ${AUTH_TOKEN_PEPPER}
+      AUTH_COOKIE_SECURE: ${AUTH_COOKIE_SECURE:-false}
+      AUTH_COOKIE_SAME_SITE: ${AUTH_COOKIE_SAME_SITE:-Strict}
+      EXPOSE_DEV_OTP: ${EXPOSE_DEV_OTP:-false}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:8081}
+      FORWARD_HEADERS_STRATEGY: ${FORWARD_HEADERS_STRATEGY:-NONE}
+      OTP_RESEND_COOLDOWN: ${OTP_RESEND_COOLDOWN:-60s}
+      OTP_EMAIL_WINDOW: ${OTP_EMAIL_WINDOW:-15m}
+      OTP_MAX_REQUESTS_PER_EMAIL: ${OTP_MAX_REQUESTS_PER_EMAIL:-5}
+      OTP_IP_WINDOW: ${OTP_IP_WINDOW:-15m}
+      OTP_MAX_REQUESTS_PER_IP: ${OTP_MAX_REQUESTS_PER_IP:-20}
+      MAIL_ENABLED: ${MAIL_ENABLED:-false}
+      MAIL_PROVIDER: ${MAIL_PROVIDER:-smtp}
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      MAIL_HOST: ${MAIL_HOST:-}
+      MAIL_PORT: ${MAIL_PORT:-587}
+      MAIL_USERNAME: ${MAIL_USERNAME:-}
+      MAIL_PASSWORD: ${MAIL_PASSWORD:-}
+      MAIL_FROM: ${MAIL_FROM:-PrepPilot <no-reply@example.com>}
+      FEEDBACK_RECIPIENT_EMAIL: ${FEEDBACK_RECIPIENT_EMAIL:-}
+      APP_PUBLIC_URL: ${APP_PUBLIC_URL:-http://localhost:8081}
+      RUNNER_ENABLED: ${RUNNER_ENABLED:-false}
+      RUNNER_WORKER_TOKEN: ${RUNNER_WORKER_TOKEN:-}
+      RUNNER_DAILY_LIMIT: ${RUNNER_DAILY_LIMIT:-5}
+      RUNNER_MINIMUM_INTERVAL: ${RUNNER_MINIMUM_INTERVAL:-3s}
+      RUNNER_LEASE_DURATION: ${RUNNER_LEASE_DURATION:-60s}
+      RUNNER_MAX_ATTEMPTS: ${RUNNER_MAX_ATTEMPTS:-3}
+      RUNNER_EMAIL_RESULTS: ${RUNNER_EMAIL_RESULTS:-false}
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/actuator/health/readiness || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_UI_THEME: ${VITE_UI_THEME:-ocean}
+        VITE_THEME_TRANSITION_MS: ${VITE_THEME_TRANSITION_MS:-700}
+    container_name: preppilot-web
+    ports:
+      - "8081:80"
+    depends_on:
+      api:
+        condition: service_started
+
+volumes:
+  preppilot-postgres-data:

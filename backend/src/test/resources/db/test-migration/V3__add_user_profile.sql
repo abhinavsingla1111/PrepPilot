@@ -1,0 +1,4 @@
+ALTER TABLE app_user ADD COLUMN full_name VARCHAR(80);
+ALTER TABLE app_user ADD COLUMN age INTEGER;
+ALTER TABLE app_user ADD COLUMN mobile VARCHAR(10);
+ALTER TABLE app_user ADD COLUMN avatar_url TEXT;

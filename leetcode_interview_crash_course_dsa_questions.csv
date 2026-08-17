@@ -1,0 +1,146 @@
+﻿Problem Name,LeetCode ID,Difficulty,Topic,LeetCode Link
+Two Sum,1,Easy,Arrays & Strings,https://leetcode.com/problems/two-sum/
+Best Time to Buy and Sell Stock,121,Easy,Arrays & Strings,https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+Contains Duplicate,217,Easy,Arrays & Strings,https://leetcode.com/problems/contains-duplicate/
+Product of Array Except Self,238,Medium,Arrays & Strings,https://leetcode.com/problems/product-of-array-except-self/
+Maximum Subarray,53,Medium,Arrays & Strings,https://leetcode.com/problems/maximum-subarray/
+Maximum Product Subarray,152,Medium,Arrays & Strings,https://leetcode.com/problems/maximum-product-subarray/
+Merge Sorted Array,88,Easy,Arrays & Strings,https://leetcode.com/problems/merge-sorted-array/
+Remove Duplicates from Sorted Array,26,Easy,Arrays & Strings,https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+Move Zeroes,283,Easy,Arrays & Strings,https://leetcode.com/problems/move-zeroes/
+3Sum,15,Medium,Arrays & Strings,https://leetcode.com/problems/3sum/
+Container With Most Water,11,Medium,Arrays & Strings,https://leetcode.com/problems/container-with-most-water/
+Trapping Rain Water,42,Hard,Arrays & Strings,https://leetcode.com/problems/trapping-rain-water/
+Longest Substring Without Repeating Characters,3,Medium,Arrays & Strings,https://leetcode.com/problems/longest-substring-without-repeating-characters/
+Longest Repeating Character Replacement,424,Medium,Arrays & Strings,https://leetcode.com/problems/longest-repeating-character-replacement/
+Minimum Window Substring,76,Hard,Arrays & Strings,https://leetcode.com/problems/minimum-window-substring/
+Valid Anagram,242,Easy,Hashing,https://leetcode.com/problems/valid-anagram/
+Group Anagrams,49,Medium,Hashing,https://leetcode.com/problems/group-anagrams/
+Top K Frequent Elements,347,Medium,Hashing,https://leetcode.com/problems/top-k-frequent-elements/
+Encode and Decode Strings,271,Medium,Hashing,https://leetcode.com/problems/encode-and-decode-strings/
+Longest Consecutive Sequence,128,Medium,Hashing,https://leetcode.com/problems/longest-consecutive-sequence/
+Find All Anagrams in a String,438,Medium,Hashing,https://leetcode.com/problems/find-all-anagrams-in-a-string/
+Subarray Sum Equals K,560,Medium,Hashing,https://leetcode.com/problems/subarray-sum-equals-k/
+Ransom Note,383,Easy,Hashing,https://leetcode.com/problems/ransom-note/
+Happy Number,202,Easy,Hashing,https://leetcode.com/problems/happy-number/
+Isomorphic Strings,205,Easy,Hashing,https://leetcode.com/problems/isomorphic-strings/
+Reverse Linked List,206,Easy,Linked List,https://leetcode.com/problems/reverse-linked-list/
+Linked List Cycle,141,Easy,Linked List,https://leetcode.com/problems/linked-list-cycle/
+Merge Two Sorted Lists,21,Easy,Linked List,https://leetcode.com/problems/merge-two-sorted-lists/
+Reorder List,143,Medium,Linked List,https://leetcode.com/problems/reorder-list/
+Remove Nth Node From End of List,19,Medium,Linked List,https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+Copy List with Random Pointer,138,Medium,Linked List,https://leetcode.com/problems/copy-list-with-random-pointer/
+Add Two Numbers,2,Medium,Linked List,https://leetcode.com/problems/add-two-numbers/
+Find the Duplicate Number,287,Medium,Linked List,https://leetcode.com/problems/find-the-duplicate-number/
+LRU Cache,146,Medium,Linked List,https://leetcode.com/problems/lru-cache/
+Merge k Sorted Lists,23,Hard,Linked List,https://leetcode.com/problems/merge-k-sorted-lists/
+Valid Parentheses,20,Easy,Stacks & Queues,https://leetcode.com/problems/valid-parentheses/
+Min Stack,155,Medium,Stacks & Queues,https://leetcode.com/problems/min-stack/
+Evaluate Reverse Polish Notation,150,Medium,Stacks & Queues,https://leetcode.com/problems/evaluate-reverse-polish-notation/
+Generate Parentheses,22,Medium,Stacks & Queues,https://leetcode.com/problems/generate-parentheses/
+Daily Temperatures,739,Medium,Stacks & Queues,https://leetcode.com/problems/daily-temperatures/
+Car Fleet,853,Medium,Stacks & Queues,https://leetcode.com/problems/car-fleet/
+Implement Queue using Stacks,232,Easy,Stacks & Queues,https://leetcode.com/problems/implement-queue-using-stacks/
+Sliding Window Maximum,239,Hard,Stacks & Queues,https://leetcode.com/problems/sliding-window-maximum/
+Largest Rectangle in Histogram,84,Hard,Stacks & Queues,https://leetcode.com/problems/largest-rectangle-in-histogram/
+Basic Calculator,224,Hard,Stacks & Queues,https://leetcode.com/problems/basic-calculator/
+Maximum Depth of Binary Tree,104,Easy,Trees & Graphs,https://leetcode.com/problems/maximum-depth-of-binary-tree/
+Same Tree,100,Easy,Trees & Graphs,https://leetcode.com/problems/same-tree/
+Invert Binary Tree,226,Easy,Trees & Graphs,https://leetcode.com/problems/invert-binary-tree/
+Binary Tree Level Order Traversal,102,Medium,Trees & Graphs,https://leetcode.com/problems/binary-tree-level-order-traversal/
+Diameter of Binary Tree,543,Easy,Trees & Graphs,https://leetcode.com/problems/diameter-of-binary-tree/
+Balanced Binary Tree,110,Easy,Trees & Graphs,https://leetcode.com/problems/balanced-binary-tree/
+Lowest Common Ancestor of BST,235,Medium,Trees & Graphs,https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
+Validate Binary Search Tree,98,Medium,Trees & Graphs,https://leetcode.com/problems/validate-binary-search-tree/
+Kth Smallest Element in a BST,230,Medium,Trees & Graphs,https://leetcode.com/problems/kth-smallest-element-in-a-bst/
+Binary Tree Right Side View,199,Medium,Trees & Graphs,https://leetcode.com/problems/binary-tree-right-side-view/
+Count Good Nodes in Binary Tree,1448,Medium,Trees & Graphs,https://leetcode.com/problems/count-good-nodes-in-binary-tree/
+Construct Binary Tree from Preorder and Inorder Traversal,105,Medium,Trees & Graphs,https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+Path Sum,112,Easy,Trees & Graphs,https://leetcode.com/problems/path-sum/
+Path Sum II,113,Medium,Trees & Graphs,https://leetcode.com/problems/path-sum-ii/
+Serialize and Deserialize Binary Tree,297,Hard,Trees & Graphs,https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
+Number of Islands,200,Medium,Trees & Graphs,https://leetcode.com/problems/number-of-islands/
+Clone Graph,133,Medium,Trees & Graphs,https://leetcode.com/problems/clone-graph/
+Course Schedule,207,Medium,Trees & Graphs,https://leetcode.com/problems/course-schedule/
+Pacific Atlantic Water Flow,417,Medium,Trees & Graphs,https://leetcode.com/problems/pacific-atlantic-water-flow/
+Rotting Oranges,994,Medium,Trees & Graphs,https://leetcode.com/problems/rotting-oranges/
+Word Ladder,127,Hard,Trees & Graphs,https://leetcode.com/problems/word-ladder/
+Graph Valid Tree,261,Medium,Trees & Graphs,https://leetcode.com/problems/graph-valid-tree/
+Redundant Connection,684,Medium,Trees & Graphs,https://leetcode.com/problems/redundant-connection/
+Kth Largest Element in an Array,215,Medium,Heap,https://leetcode.com/problems/kth-largest-element-in-an-array/
+Last Stone Weight,1046,Easy,Heap,https://leetcode.com/problems/last-stone-weight/
+K Closest Points to Origin,973,Medium,Heap,https://leetcode.com/problems/k-closest-points-to-origin/
+Task Scheduler,621,Medium,Heap,https://leetcode.com/problems/task-scheduler/
+Find Median from Data Stream,295,Hard,Heap,https://leetcode.com/problems/find-median-from-data-stream/
+Design Twitter,355,Medium,Heap,https://leetcode.com/problems/design-twitter/
+Meeting Rooms II,253,Medium,Heap,https://leetcode.com/problems/meeting-rooms-ii/
+Merge K Sorted Lists,23,Hard,Heap,https://leetcode.com/problems/merge-k-sorted-lists/
+Maximum Units on a Truck,1710,Easy,Greedy,https://leetcode.com/problems/maximum-units-on-a-truck/
+Jump Game,55,Medium,Greedy,https://leetcode.com/problems/jump-game/
+Jump Game II,45,Medium,Greedy,https://leetcode.com/problems/jump-game-ii/
+Gas Station,134,Medium,Greedy,https://leetcode.com/problems/gas-station/
+Hand of Straights,846,Medium,Greedy,https://leetcode.com/problems/hand-of-straights/
+Merge Triplets to Form Target Triplet,1899,Medium,Greedy,https://leetcode.com/problems/merge-triplets-to-form-target-triplet/
+Partition Labels,763,Medium,Greedy,https://leetcode.com/problems/partition-labels/
+Valid Parenthesis String,678,Medium,Greedy,https://leetcode.com/problems/valid-parenthesis-string/
+Binary Search,704,Easy,Binary Search,https://leetcode.com/problems/binary-search/
+Search Insert Position,35,Easy,Binary Search,https://leetcode.com/problems/search-insert-position/
+Search a 2D Matrix,74,Medium,Binary Search,https://leetcode.com/problems/search-a-2d-matrix/
+Koko Eating Bananas,875,Medium,Binary Search,https://leetcode.com/problems/koko-eating-bananas/
+Find Minimum in Rotated Sorted Array,153,Medium,Binary Search,https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+Search in Rotated Sorted Array,33,Medium,Binary Search,https://leetcode.com/problems/search-in-rotated-sorted-array/
+Time Based Key-Value Store,981,Medium,Binary Search,https://leetcode.com/problems/time-based-key-value-store/
+Median of Two Sorted Arrays,4,Hard,Binary Search,https://leetcode.com/problems/median-of-two-sorted-arrays/
+Subsets,78,Medium,Backtracking,https://leetcode.com/problems/subsets/
+Combination Sum,39,Medium,Backtracking,https://leetcode.com/problems/combination-sum/
+Permutations,46,Medium,Backtracking,https://leetcode.com/problems/permutations/
+Subsets II,90,Medium,Backtracking,https://leetcode.com/problems/subsets-ii/
+Combination Sum II,40,Medium,Backtracking,https://leetcode.com/problems/combination-sum-ii/
+Word Search,79,Medium,Backtracking,https://leetcode.com/problems/word-search/
+Palindrome Partitioning,131,Medium,Backtracking,https://leetcode.com/problems/palindrome-partitioning/
+Letter Combinations of a Phone Number,17,Medium,Backtracking,https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+N-Queens,51,Hard,Backtracking,https://leetcode.com/problems/n-queens/
+Climbing Stairs,70,Easy,Dynamic Programming,https://leetcode.com/problems/climbing-stairs/
+Min Cost Climbing Stairs,746,Easy,Dynamic Programming,https://leetcode.com/problems/min-cost-climbing-stairs/
+House Robber,198,Medium,Dynamic Programming,https://leetcode.com/problems/house-robber/
+House Robber II,213,Medium,Dynamic Programming,https://leetcode.com/problems/house-robber-ii/
+Longest Palindromic Substring,5,Medium,Dynamic Programming,https://leetcode.com/problems/longest-palindromic-substring/
+Palindromic Substrings,647,Medium,Dynamic Programming,https://leetcode.com/problems/palindromic-substrings/
+Decode Ways,91,Medium,Dynamic Programming,https://leetcode.com/problems/decode-ways/
+Coin Change,322,Medium,Dynamic Programming,https://leetcode.com/problems/coin-change/
+Maximum Product Subarray,152,Medium,Dynamic Programming,https://leetcode.com/problems/maximum-product-subarray/
+Word Break,139,Medium,Dynamic Programming,https://leetcode.com/problems/word-break/
+Longest Increasing Subsequence,300,Medium,Dynamic Programming,https://leetcode.com/problems/longest-increasing-subsequence/
+Partition Equal Subset Sum,416,Medium,Dynamic Programming,https://leetcode.com/problems/partition-equal-subset-sum/
+Unique Paths,62,Medium,Dynamic Programming,https://leetcode.com/problems/unique-paths/
+Longest Common Subsequence,1143,Medium,Dynamic Programming,https://leetcode.com/problems/longest-common-subsequence/
+Best Time to Buy and Sell Stock with Cooldown,309,Medium,Dynamic Programming,https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
+Coin Change II,518,Medium,Dynamic Programming,https://leetcode.com/problems/coin-change-ii/
+Target Sum,494,Medium,Dynamic Programming,https://leetcode.com/problems/target-sum/
+Interleaving String,97,Medium,Dynamic Programming,https://leetcode.com/problems/interleaving-string/
+Edit Distance,72,Hard,Dynamic Programming,https://leetcode.com/problems/edit-distance/
+Distinct Subsequences,115,Hard,Dynamic Programming,https://leetcode.com/problems/distinct-subsequences/
+Network Delay Time,743,Medium,Advanced Graphs,https://leetcode.com/problems/network-delay-time/
+Cheapest Flights Within K Stops,787,Medium,Advanced Graphs,https://leetcode.com/problems/cheapest-flights-within-k-stops/
+Swim in Rising Water,778,Hard,Advanced Graphs,https://leetcode.com/problems/swim-in-rising-water/
+Alien Dictionary,269,Hard,Advanced Graphs,https://leetcode.com/problems/alien-dictionary/
+Min Stack,155,Medium,Design,https://leetcode.com/problems/min-stack/
+Trie (Prefix Tree),208,Medium,Trie,https://leetcode.com/problems/implement-trie-prefix-tree/
+Design Add and Search Words Data Structure,211,Medium,Trie,https://leetcode.com/problems/design-add-and-search-words-data-structure/
+Word Search II,212,Hard,Trie,https://leetcode.com/problems/word-search-ii/
+Longest Common Prefix,14,Easy,Strings,https://leetcode.com/problems/longest-common-prefix/
+Valid Palindrome,125,Easy,Strings,https://leetcode.com/problems/valid-palindrome/
+Palindrome Number,9,Easy,Math,https://leetcode.com/problems/palindrome-number/
+"Pow(x, n)",50,Medium,Math,https://leetcode.com/problems/powx-n/
+Rotate Image,48,Medium,Matrix,https://leetcode.com/problems/rotate-image/
+Set Matrix Zeroes,73,Medium,Matrix,https://leetcode.com/problems/set-matrix-zeroes/
+Spiral Matrix,54,Medium,Matrix,https://leetcode.com/problems/spiral-matrix/
+Game of Life,289,Medium,Matrix,https://leetcode.com/problems/game-of-life/
+Sort Colors,75,Medium,Two Pointers,https://leetcode.com/problems/sort-colors/
+Valid Sudoku,36,Medium,Matrix,https://leetcode.com/problems/valid-sudoku/
+Reverse Bits,190,Easy,Bit Manipulation,https://leetcode.com/problems/reverse-bits/
+Number of 1 Bits,191,Easy,Bit Manipulation,https://leetcode.com/problems/number-of-1-bits/
+Single Number,136,Easy,Bit Manipulation,https://leetcode.com/problems/single-number/
+Counting Bits,338,Easy,Bit Manipulation,https://leetcode.com/problems/counting-bits/
+Missing Number,268,Easy,Bit Manipulation,https://leetcode.com/problems/missing-number/
+Sum of Two Integers,371,Medium,Bit Manipulation,https://leetcode.com/problems/sum-of-two-integers/

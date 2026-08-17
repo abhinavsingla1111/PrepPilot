@@ -1,0 +1,42 @@
+# ---- OS ----
+.DS_Store
+Thumbs.db
+
+# ---- IDEs / editors ----
+.idea/
+*.iml
+.vscode/
+*.swp
+
+# ---- Java / Maven / Gradle ----
+target/
+build/
+.gradle/
+*.class
+*.jar
+*.war
+!**/src/**/*.jar
+hs_err_pid*
+
+# ---- Node / React ----
+node_modules/
+dist/
+dist-ssr/
+coverage/
+*.local
+
+# ---- Env / secrets ----
+.env
+.env.*
+!.env.example
+*.pem
+
+# ---- Logs ----
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ---- Python runner ----
+__pycache__/
+*.py[cod]

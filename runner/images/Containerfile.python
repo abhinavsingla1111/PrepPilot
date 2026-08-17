@@ -1,0 +1,7 @@
+FROM docker.io/library/python:3.13-slim-bookworm@sha256:50687b3b011d549c19f95ecfef21b15c0d8234571a8a293055978793a6779d2d
+
+RUN groupadd --gid 10001 sandbox \
+    && useradd --uid 10001 --gid 10001 --no-create-home --shell /usr/sbin/nologin sandbox
+COPY --chmod=0555 runner/sandbox/run.sh /opt/preppilot/run.sh
+USER 10001:10001
+ENTRYPOINT ["/opt/preppilot/run.sh"]

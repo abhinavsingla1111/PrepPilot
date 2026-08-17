@@ -1,0 +1,26 @@
+FROM maven:3.9.11-eclipse-temurin-21-alpine AS build
+
+WORKDIR /workspace/backend
+COPY backend/pom.xml ./pom.xml
+# Cache the Maven repo so dependencies are never re-downloaded between builds.
+RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline -B
+
+COPY backend/src ./src
+COPY leetcode_interview_crash_course_dsa_questions.csv /workspace/leetcode_interview_crash_course_dsa_questions.csv
+# Cache both the Maven repo and the target/ dir so compilation is incremental
+# (only changed sources recompile). Copy the jar out of the cache mount so the
+# next stage can COPY it (cache mounts are not part of the committed layer).
+RUN --mount=type=cache,target=/root/.m2 \
+  --mount=type=cache,target=/workspace/backend/target \
+  mvn package -B -DskipTests && \
+  cp target/preppilot-api-0.1.0.jar /app.jar
+
+FROM eclipse-temurin:21-jre-alpine
+
+RUN addgroup -S preppilot && adduser -S preppilot -G preppilot
+WORKDIR /app
+COPY --from=build /app.jar app.jar
+USER preppilot
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-XX:MaxRAMPercentage=75.0", "-jar", "/app/app.jar"]

@@ -1,0 +1,7 @@
+#include <iostream>
+
+int main() {
+    int value;
+    std::cin >> value;
+    std::cout << value * 2 << '\n';
+}

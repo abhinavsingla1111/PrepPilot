@@ -1,0 +1,26 @@
+[Unit]
+Description=PrepPilot rootless Podman code runner
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/PrepPilot
+EnvironmentFile=%h/PrepPilot/runner/.env
+ExecStart=/usr/bin/python3 %h/PrepPilot/runner/worker.py
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=40
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+# The leading '-' keeps first boot working before Podman creates these paths.
+ReadWritePaths=-%h/.local/share/containers -%h/.config/containers -%h/.cache/containers
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=default.target

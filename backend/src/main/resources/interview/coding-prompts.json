@@ -1,0 +1,1102 @@
+[
+  {
+    "slug": "longest-stable-window",
+    "title": "Longest Stable Monitoring Window",
+    "difficulty": "MEDIUM",
+    "topic": "Sliding Window",
+    "learningOrder": 1,
+    "companyTags": "Common product-company pattern",
+    "description": "A monitoring service records latency samples in arrival order. Find the length of the longest contiguous window whose largest and smallest values differ by at most `limit`. The input can be large, so repeatedly scanning an entire window will time out.",
+    "constraints": "1 <= n <= 100000\n0 <= latency[i] <= 1000000000\n0 <= limit <= 1000000000",
+    "inputFormat": "Line 1: `n limit`\nLine 2: `n` latency values",
+    "outputFormat": "Print one integer: the maximum valid window length.",
+    "examples": "Input\n4 4\n8 2 4 7\nOutput\n2\n\nInput\n6 5\n10 1 2 4 7 2\nOutput\n4",
+    "expectedApproach": "Maintain a sliding window with a decreasing deque for the maximum and an increasing deque for the minimum. Expand right; while max-min exceeds the limit, advance left and discard expired indices.",
+    "expectedTimeComplexity": "O(n)",
+    "expectedSpaceComplexity": "O(n)",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\n\nclass Solution {\n  public int longestStableWindow(int[] latency, int limit) {\n    // TODO: return the longest valid contiguous window.\n    return 0;\n  }\n}\n\npublic class Main {\n  public static void main(String[] args) throws Exception {\n    FastScanner in = new FastScanner(System.in);\n    int n = in.nextInt(), limit = in.nextInt();\n    int[] latency = new int[n];\n    for (int i = 0; i < n; i++)\n      latency[i] = in.nextInt();\n    System.out.println(new Solution().longestStableWindow(latency, limit));\n  }\n  static final class FastScanner {\n    private final InputStream in;\n    private final byte[] b = new byte[1 << 16];\n    private int p, l;\n    FastScanner(InputStream in) { this.in = in; }\n    int read() throws IOException {\n      if (p >= l) {\n        l = in.read(b);\n        p = 0;\n        if (l < 0)\n          return -1;\n      }\n      return b[p++];\n    }\n    int nextInt() throws IOException {\n      int c, s = 1, v = 0;\n      do\n        c = read();\n      while (c <= 32);\n      if (c == '-') {\n        s = -1;\n        c = read();\n      }\n      while (c > 32) {\n        v = v * 10 + c - '0';\n        c = read();\n      }\n      return v * s;\n    }\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\n\nclass Solution {\npublic:\n  int longestStableWindow(const vector<int> &latency, int limit) {\n    // TODO: return the longest valid contiguous window.\n    return 0;\n  }\n};\n\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int n, limit;\n  cin >> n >> limit;\n  vector<int> latency(n);\n  for (int &value : latency)\n    cin >> value;\n  cout << Solution().longestStableWindow(latency, limit) << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def longest_stable_window(self, latency: list[int], limit: int) -> int:\n    # TODO: return the longest valid contiguous window.\n    return 0\n\ndef main() -> None:\n  data = list(map(int, sys.stdin.buffer.read().split()))\n  n, limit = data[:2]\n  latency = data[2:2 + n]\n  print(Solution().longest_stable_window(latency, limit))\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "4 4\n8 2 4 7\n",
+        "expectedOutput": "2\n",
+        "explanation": "The longest windows are [2,4] and [4,7]."
+      },
+      {
+        "input": "6 5\n10 1 2 4 7 2\n",
+        "expectedOutput": "4\n",
+        "explanation": "[2,4,7,2] has range five."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "1 0\n42\n",
+        "expectedOutput": "1\n",
+        "explanation": "Single element."
+      },
+      {
+        "input": "5 0\n3 3 3 3 3\n",
+        "expectedOutput": "5\n",
+        "explanation": "All equal."
+      },
+      {
+        "input": "5 0\n1 2 3 4 5\n",
+        "expectedOutput": "1\n",
+        "explanation": "Only singletons are valid."
+      },
+      {
+        "input": "9 4\n1 5 6 7 8 10 6 5 6\n",
+        "expectedOutput": "5\n",
+        "explanation": "A five-value middle window is valid."
+      }
+    ]
+  },
+  {
+    "slug": "longest-unique-segment",
+    "title": "Longest Segment Without Repeated Characters",
+    "difficulty": "MEDIUM",
+    "topic": "Sliding Window",
+    "learningOrder": 11,
+    "companyTags": "Common screening-round pattern",
+    "description": "Given a single ASCII string, return the length of its longest contiguous substring containing no repeated character. The empty string is valid input.",
+    "constraints": "0 <= length <= 200000\nInput contains printable ASCII characters and no leading or trailing spaces.",
+    "inputFormat": "One line containing the string.",
+    "outputFormat": "Print the maximum length.",
+    "examples": "Input\nabcabcbb\nOutput\n3",
+    "expectedApproach": "Track the most recent index of each character. Move the left boundary past a repeated character only when its previous index is still inside the current window.",
+    "expectedTimeComplexity": "O(n)",
+    "expectedSpaceComplexity": "O(1) for ASCII",
+    "starters": {
+      "java": "import java.io.*;\nclass Solution {\n  public int longestUniqueSegment(String text) { /* TODO: implement the interview solution. */\n    return 0;\n  }\n}\npublic class Main {\n  public static void main(String[] x) throws Exception {\n    String s = new BufferedReader(new InputStreamReader(System.in)).readLine();\n    System.out.println(new Solution().longestUniqueSegment(s == null ? \"\" : s));\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n  int longestUniqueSegment(const string &s) { /* TODO: implement the interview solution. */\n    return 0;\n  }\n};\nint main() {\n  string s;\n  getline(cin, s);\n  cout << Solution().longestUniqueSegment(s) << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def longest_unique_segment(self, text: str) -> int:\n    # TODO: return the longest substring with unique characters.\n    return 0\n\ndef main() -> None:\n  text = sys.stdin.readline().rstrip(\"\\n\")\n  print(Solution().longest_unique_segment(text))\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "abcabcbb\n",
+        "expectedOutput": "3\n",
+        "explanation": "abc is a longest unique substring."
+      },
+      {
+        "input": "bbbbb\n",
+        "expectedOutput": "1\n",
+        "explanation": "Only one repeated character can remain."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "\n",
+        "expectedOutput": "0\n",
+        "explanation": "Empty input."
+      },
+      {
+        "input": "pwwkew\n",
+        "expectedOutput": "3\n",
+        "explanation": "wke is valid; non-contiguous pwke is not."
+      },
+      {
+        "input": "abba\n",
+        "expectedOutput": "2\n",
+        "explanation": "The left edge must never move backwards."
+      },
+      {
+        "input": "abcdef\n",
+        "expectedOutput": "6\n",
+        "explanation": "All characters are unique."
+      }
+    ]
+  },
+  {
+    "slug": "top-k-frequent-values",
+    "title": "Top K Frequent Values with Deterministic Ties",
+    "difficulty": "MEDIUM",
+    "topic": "Hashing and Heap",
+    "learningOrder": 12,
+    "companyTags": "Common screening-round pattern",
+    "description": "Return the `k` most frequent integers. Sort the answer by descending frequency; when frequencies tie, place the smaller integer first. `k` never exceeds the number of distinct values.",
+    "constraints": "1 <= n <= 200000\n1 <= k <= distinct values\n-1000000000 <= value <= 1000000000",
+    "inputFormat": "Line 1: `n k`\nLine 2: `n` integers",
+    "outputFormat": "Print the selected values in required order, separated by spaces.",
+    "examples": "Input\n6 2\n1 1 1 2 2 3\nOutput\n1 2",
+    "expectedApproach": "Count with a map, then either sort distinct entries by the required comparator or keep a size-k heap with the inverse comparator.",
+    "expectedTimeComplexity": "O(n + u log u) with sorting, or O(n + u log k)",
+    "expectedSpaceComplexity": "O(u)",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\nclass Solution {\n  public List<Integer> topK(int[] values, int k) { /* TODO: implement the interview solution. */\n    return List.of();\n  }\n}\npublic class Main {\n  public static void main(String[] x) {\n    Scanner in = new Scanner(new BufferedInputStream(System.in));\n    int n = in.nextInt(), k = in.nextInt();\n    int[] a = new int[n];\n    for (int i = 0; i < n; i++)\n      a[i] = in.nextInt();\n    List<Integer> r = new Solution().topK(a, k);\n    for (int i = 0; i < r.size(); i++)\n      System.out.print((i > 0 ? \" \" : \"\") + r.get(i));\n    System.out.println();\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n  vector<int> topK(const vector<int> &a, int k) { /* TODO: implement the interview solution. */\n    return {};\n  }\n};\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int n, k;\n  cin >> n >> k;\n  vector<int> a(n);\n  for (int &x : a)\n    cin >> x;\n  auto r = Solution().topK(a, k);\n  for (int i = 0; i < (int)r.size(); i++)\n    cout << (i ? \" \" : \"\") << r[i];\n  cout << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def top_k(self, values: list[int], k: int) -> list[int]:\n    # TODO: return the k most frequent values in the required order.\n    return []\n\ndef main() -> None:\n  data = list(map(int, sys.stdin.buffer.read().split()))\n  n, k = data[:2]\n  values = data[2:2 + n]\n  print(*Solution().top_k(values, k))\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "6 2\n1 1 1 2 2 3\n",
+        "expectedOutput": "1 2\n",
+        "explanation": "Frequencies are 3, 2, and 1."
+      },
+      {
+        "input": "5 2\n4 4 -1 -1 2\n",
+        "expectedOutput": "-1 4\n",
+        "explanation": "The tie is ordered by numeric value."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "1 1\n9\n",
+        "expectedOutput": "9\n",
+        "explanation": "One value."
+      },
+      {
+        "input": "8 3\n3 3 2 2 1 1 4 4\n",
+        "expectedOutput": "1 2 3\n",
+        "explanation": "All frequencies tie."
+      },
+      {
+        "input": "7 2\n0 0 0 -2 -2 5 5\n",
+        "expectedOutput": "0 -2\n",
+        "explanation": "Frequency dominates numeric order."
+      },
+      {
+        "input": "10 3\n8 8 8 7 7 6 6 6 5 4\n",
+        "expectedOutput": "6 8 7\n",
+        "explanation": "6 and 8 tie at three, then 7."
+      }
+    ]
+  },
+  {
+    "slug": "warmer-reading-waits",
+    "title": "Wait Until a Warmer Reading",
+    "difficulty": "MEDIUM",
+    "topic": "Monotonic Stack",
+    "learningOrder": 13,
+    "companyTags": "Common screening-round pattern",
+    "description": "For each daily temperature, return how many days must pass before a strictly warmer reading. Return `0` when no future day is warmer.",
+    "constraints": "1 <= n <= 200000\n-100 <= temperature <= 200",
+    "inputFormat": "Line 1: `n`\nLine 2: `n` temperatures",
+    "outputFormat": "Print `n` wait counts separated by spaces.",
+    "examples": "Input\n8\n73 74 75 71 69 72 76 73\nOutput\n1 1 4 2 1 1 0 0",
+    "expectedApproach": "Keep indices of unresolved temperatures in a decreasing stack. A warmer value resolves and pops every smaller temperature on top.",
+    "expectedTimeComplexity": "O(n)",
+    "expectedSpaceComplexity": "O(n)",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\nclass Solution {\n  public int[] waits(int[] t) { /* TODO: implement the interview solution. */\n    return new int[t.length];\n  }\n}\npublic class Main {\n  public static void main(String[] x) {\n    Scanner in = new Scanner(new BufferedInputStream(System.in));\n    int n = in.nextInt();\n    int[] a = new int[n];\n    for (int i = 0; i < n; i++)\n      a[i] = in.nextInt();\n    int[] r = new Solution().waits(a);\n    for (int i = 0; i < n; i++)\n      System.out.print((i > 0 ? \" \" : \"\") + r[i]);\n    System.out.println();\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n  vector<int> waits(const vector<int> &t) { /* TODO: implement the interview solution. */\n    return vector<int>(t.size());\n  }\n};\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int n;\n  cin >> n;\n  vector<int> a(n);\n  for (int &x : a)\n    cin >> x;\n  auto r = Solution().waits(a);\n  for (int i = 0; i < n; i++)\n    cout << (i ? \" \" : \"\") << r[i];\n  cout << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def waits(self, temperatures: list[int]) -> list[int]:\n    # TODO: return the wait for a warmer reading at each position.\n    return [0] * len(temperatures)\n\ndef main() -> None:\n  data = list(map(int, sys.stdin.buffer.read().split()))\n  n = data[0]\n  temperatures = data[1:1 + n]\n  print(*Solution().waits(temperatures))\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "8\n73 74 75 71 69 72 76 73\n",
+        "expectedOutput": "1 1 4 2 1 1 0 0\n",
+        "explanation": "Each answer points to the next strictly warmer day."
+      },
+      {
+        "input": "3\n30 40 50\n",
+        "expectedOutput": "1 1 0\n",
+        "explanation": "Strictly increasing sequence."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "3\n50 40 30\n",
+        "expectedOutput": "0 0 0\n",
+        "explanation": "No future warmer value."
+      },
+      {
+        "input": "4\n30 30 31 30\n",
+        "expectedOutput": "2 1 0 0\n",
+        "explanation": "Equal values are not warmer."
+      },
+      {
+        "input": "1\n10\n",
+        "expectedOutput": "0\n",
+        "explanation": "One day."
+      },
+      {
+        "input": "6\n70 71 69 72 68 73\n",
+        "expectedOutput": "1 2 1 2 1 0\n",
+        "explanation": "Several stack pops."
+      }
+    ]
+  },
+  {
+    "slug": "rotated-catalog-search",
+    "title": "Search a Rotated Sorted Catalog",
+    "difficulty": "MEDIUM",
+    "topic": "Binary Search",
+    "learningOrder": 14,
+    "companyTags": "Common screening-round pattern",
+    "description": "A strictly increasing array of distinct integers was rotated at an unknown pivot. Return the index of `target` in logarithmic time, or `-1` when absent.",
+    "constraints": "1 <= n <= 200000\nValues are distinct.\nThe array is a rotation of a strictly increasing sequence.",
+    "inputFormat": "Line 1: `n target`\nLine 2: `n` integers",
+    "outputFormat": "Print the zero-based index or `-1`.",
+    "examples": "Input\n7 0\n4 5 6 7 0 1 2\nOutput\n4",
+    "expectedApproach": "At each binary-search step one half is sorted. Decide whether target lies inside that half; otherwise discard it and search the other half.",
+    "expectedTimeComplexity": "O(log n)",
+    "expectedSpaceComplexity": "O(1)",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\nclass Solution {\n  public int search(int[] a, int target) { /* TODO: implement the interview solution. */\n    return -1;\n  }\n}\npublic class Main {\n  public static void main(String[] x) {\n    Scanner in = new Scanner(new BufferedInputStream(System.in));\n    int n = in.nextInt(), t = in.nextInt();\n    int[] a = new int[n];\n    for (int i = 0; i < n; i++)\n      a[i] = in.nextInt();\n    System.out.println(new Solution().search(a, t));\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n  int search(const vector<int> &a, int target) { /* TODO: implement the interview solution. */\n    return -1;\n  }\n};\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int n, t;\n  cin >> n >> t;\n  vector<int> a(n);\n  for (int &x : a)\n    cin >> x;\n  cout << Solution().search(a, t) << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def search(self, values: list[int], target: int) -> int:\n    # TODO: return the target index, or -1 when it is absent.\n    return -1\n\ndef main() -> None:\n  data = list(map(int, sys.stdin.buffer.read().split()))\n  n, target = data[:2]\n  values = data[2:2 + n]\n  print(Solution().search(values, target))\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "7 0\n4 5 6 7 0 1 2\n",
+        "expectedOutput": "4\n",
+        "explanation": "Target is after the pivot."
+      },
+      {
+        "input": "7 3\n4 5 6 7 0 1 2\n",
+        "expectedOutput": "-1\n",
+        "explanation": "Target is absent."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "1 1\n1\n",
+        "expectedOutput": "0\n",
+        "explanation": "Single element."
+      },
+      {
+        "input": "5 5\n1 2 3 4 5\n",
+        "expectedOutput": "4\n",
+        "explanation": "No effective rotation."
+      },
+      {
+        "input": "5 5\n5 1 2 3 4\n",
+        "expectedOutput": "0\n",
+        "explanation": "Pivot at first element."
+      },
+      {
+        "input": "6 -3\n2 4 8 -5 -3 0\n",
+        "expectedOutput": "4\n",
+        "explanation": "Negative values."
+      }
+    ]
+  },
+  {
+    "slug": "connected-island-count",
+    "title": "Count Connected Islands",
+    "difficulty": "MEDIUM",
+    "topic": "Grid Traversal",
+    "learningOrder": 15,
+    "companyTags": "Common screening-round pattern",
+    "description": "A binary grid uses `1` for land and `0` for water. Count connected land components using only horizontal and vertical adjacency. Diagonal cells are not connected.",
+    "constraints": "1 <= rows * columns <= 100000\nEvery row has equal length.",
+    "inputFormat": "Line 1: `rows columns`\nNext `rows` lines: strings of `0` and `1`",
+    "outputFormat": "Print the number of islands.",
+    "examples": "Input\n4 5\n11000\n11000\n00100\n00011\nOutput\n3",
+    "expectedApproach": "Scan every cell. On unseen land, increment the count and flood-fill its entire component with iterative DFS or BFS to avoid recursion-depth failures.",
+    "expectedTimeComplexity": "O(rows * columns)",
+    "expectedSpaceComplexity": "O(rows * columns) worst case",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\nclass Solution {\n  public int countIslands(char[][] g) { /* TODO: implement the interview solution. */ return 0; }\n}\npublic class Main {\n  public static void main(String[] x) {\n    Scanner in = new Scanner(new BufferedInputStream(System.in));\n    int r = in.nextInt(), c = in.nextInt();\n    char[][] g = new char[r][];\n    for (int i = 0; i < r; i++)\n      g[i] = in.next().toCharArray();\n    System.out.println(new Solution().countIslands(g));\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n  int countIslands(vector<string> g) { /* TODO: implement the interview solution. */ return 0; }\n};\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int r, c;\n  cin >> r >> c;\n  vector<string> g(r);\n  for (auto &s : g)\n    cin >> s;\n  cout << Solution().countIslands(g) << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def count_islands(self, grid: list[str]) -> int:\n    # TODO: count connected components of land cells.\n    return 0\n\ndef main() -> None:\n  lines = sys.stdin.read().splitlines()\n  rows, _columns = map(int, lines[0].split())\n  grid = lines[1:1 + rows]\n  print(Solution().count_islands(grid))\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "4 5\n11000\n11000\n00100\n00011\n",
+        "expectedOutput": "3\n",
+        "explanation": "Three orthogonally connected components."
+      },
+      {
+        "input": "2 3\n000\n000\n",
+        "expectedOutput": "0\n",
+        "explanation": "No land."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "1 1\n1\n",
+        "expectedOutput": "1\n",
+        "explanation": "Single land cell."
+      },
+      {
+        "input": "3 3\n101\n010\n101\n",
+        "expectedOutput": "5\n",
+        "explanation": "Diagonal land is disconnected."
+      },
+      {
+        "input": "3 4\n1111\n1001\n1111\n",
+        "expectedOutput": "1\n",
+        "explanation": "One component surrounds water."
+      },
+      {
+        "input": "4 4\n1100\n0110\n0001\n1001\n",
+        "expectedOutput": "3\n",
+        "explanation": "Three components."
+      }
+    ]
+  },
+  {
+    "slug": "minimum-coin-count",
+    "title": "Minimum Coins for an Exact Amount",
+    "difficulty": "MEDIUM",
+    "topic": "Dynamic Programming",
+    "learningOrder": 16,
+    "companyTags": "Common screening-round pattern",
+    "description": "Given reusable positive coin denominations and a non-negative amount, return the minimum number of coins whose sum is exactly the amount. Return `-1` when it is impossible.",
+    "constraints": "1 <= coin count <= 100\n1 <= coin <= 10000\n0 <= amount <= 100000",
+    "inputFormat": "Line 1: `coinCount amount`\nLine 2: coin denominations",
+    "outputFormat": "Print the minimum coin count or `-1`.",
+    "examples": "Input\n3 11\n1 2 5\nOutput\n3",
+    "expectedApproach": "Use one-dimensional DP where dp[x] is the fewest coins for x. Initialize dp[0]=0 and relax every denomination for each reachable amount.",
+    "expectedTimeComplexity": "O(amount * coinCount)",
+    "expectedSpaceComplexity": "O(amount)",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\nclass Solution {\n  public int minimumCoins(int[] coins, int amount) { /* TODO: implement the interview solution. */\n    return -1;\n  }\n}\npublic class Main {\n  public static void main(String[] x) {\n    Scanner in = new Scanner(new BufferedInputStream(System.in));\n    int n = in.nextInt(), a = in.nextInt();\n    int[] c = new int[n];\n    for (int i = 0; i < n; i++)\n      c[i] = in.nextInt();\n    System.out.println(new Solution().minimumCoins(c, a));\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n  int minimumCoins(const vector<int> &c, int amount) { /* TODO: implement the interview solution. */\n    return -1;\n  }\n};\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int n, a;\n  cin >> n >> a;\n  vector<int> c(n);\n  for (int &x : c)\n    cin >> x;\n  cout << Solution().minimumCoins(c, a) << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def minimum_coins(self, coins: list[int], amount: int) -> int:\n    # TODO: return the fewest coins, or -1 when impossible.\n    return -1\n\ndef main() -> None:\n  data = list(map(int, sys.stdin.buffer.read().split()))\n  n, amount = data[:2]\n  coins = data[2:2 + n]\n  print(Solution().minimum_coins(coins, amount))\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "3 11\n1 2 5\n",
+        "expectedOutput": "3\n",
+        "explanation": "5 + 5 + 1."
+      },
+      {
+        "input": "1 3\n2\n",
+        "expectedOutput": "-1\n",
+        "explanation": "No exact sum exists."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "3 0\n1 3 4\n",
+        "expectedOutput": "0\n",
+        "explanation": "Zero amount needs no coins."
+      },
+      {
+        "input": "3 6\n1 3 4\n",
+        "expectedOutput": "2\n",
+        "explanation": "3 + 3 beats greedy 4 + 1 + 1."
+      },
+      {
+        "input": "2 7\n2 5\n",
+        "expectedOutput": "2\n",
+        "explanation": "5 + 2."
+      },
+      {
+        "input": "4 27\n2 5 10 20\n",
+        "expectedOutput": "3\n",
+        "explanation": "20 + 5 + 2."
+      }
+    ]
+  },
+  {
+    "slug": "longest-increasing-subsequence",
+    "title": "Longest Increasing Subsequence Length",
+    "difficulty": "MEDIUM",
+    "topic": "Dynamic Programming and Binary Search",
+    "learningOrder": 17,
+    "companyTags": "Common product-company pattern",
+    "description": "Return the length of the longest strictly increasing subsequence. Elements do not need to be contiguous. The input size requires better than quadratic time.",
+    "constraints": "1 <= n <= 200000\n-1000000000 <= value <= 1000000000",
+    "inputFormat": "Line 1: `n`\nLine 2: `n` integers",
+    "outputFormat": "Print the subsequence length.",
+    "examples": "Input\n8\n10 9 2 5 3 7 101 18\nOutput\n4",
+    "expectedApproach": "Maintain tails[len-1], the smallest possible tail for an increasing subsequence of each length. Replace the first tail >= current value using lower_bound.",
+    "expectedTimeComplexity": "O(n log n)",
+    "expectedSpaceComplexity": "O(n)",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\nclass Solution {\n  public int lisLength(int[] a) { /* TODO: implement the interview solution. */ return 0; }\n}\npublic class Main {\n  public static void main(String[] x) {\n    Scanner in = new Scanner(new BufferedInputStream(System.in));\n    int n = in.nextInt();\n    int[] a = new int[n];\n    for (int i = 0; i < n; i++)\n      a[i] = in.nextInt();\n    System.out.println(new Solution().lisLength(a));\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n  int lisLength(const vector<int> &a) { /* TODO: implement the interview solution. */ return 0; }\n};\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int n;\n  cin >> n;\n  vector<int> a(n);\n  for (int &x : a)\n    cin >> x;\n  cout << Solution().lisLength(a) << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def lis_length(self, values: list[int]) -> int:\n    # TODO: return the longest strictly increasing subsequence length.\n    return 0\n\ndef main() -> None:\n  data = list(map(int, sys.stdin.buffer.read().split()))\n  n = data[0]\n  values = data[1:1 + n]\n  print(Solution().lis_length(values))\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "8\n10 9 2 5 3 7 101 18\n",
+        "expectedOutput": "4\n",
+        "explanation": "One LIS is 2,3,7,18."
+      },
+      {
+        "input": "6\n0 1 0 3 2 3\n",
+        "expectedOutput": "4\n",
+        "explanation": "0,1,2,3."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "5\n7 7 7 7 7\n",
+        "expectedOutput": "1\n",
+        "explanation": "Strict means duplicates do not extend."
+      },
+      {
+        "input": "5\n5 4 3 2 1\n",
+        "expectedOutput": "1\n",
+        "explanation": "Descending."
+      },
+      {
+        "input": "5\n1 2 3 4 5\n",
+        "expectedOutput": "5\n",
+        "explanation": "Increasing."
+      },
+      {
+        "input": "9\n3 5 6 2 5 4 19 5 6\n",
+        "expectedOutput": "4\n",
+        "explanation": "For example, 2, 4, 5, 6 has length four."
+      }
+    ]
+  },
+  {
+    "slug": "minimum-meeting-rooms",
+    "title": "Minimum Concurrent Meeting Rooms",
+    "difficulty": "MEDIUM",
+    "topic": "Intervals and Heap",
+    "learningOrder": 18,
+    "companyTags": "Common screening-round pattern",
+    "description": "Meetings use half-open intervals `[start, end)`, so a room ending at time `t` can host another meeting starting at `t`. Return the minimum number of rooms needed for every meeting.",
+    "constraints": "1 <= n <= 200000\n0 <= start < end <= 1000000000",
+    "inputFormat": "Line 1: `n`\nNext `n` lines: `start end`",
+    "outputFormat": "Print the minimum room count.",
+    "examples": "Input\n3\n0 30\n5 10\n15 20\nOutput\n2",
+    "expectedApproach": "Sort starts and ends separately and sweep them, releasing rooms when end <= next start; or sort meetings and track active end times in a min-heap.",
+    "expectedTimeComplexity": "O(n log n)",
+    "expectedSpaceComplexity": "O(n)",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\nclass Solution {\n  public int minimumRooms(int[][] meetings) { /* TODO: implement the interview solution. */\n    return 0;\n  }\n}\npublic class Main {\n  public static void main(String[] x) {\n    Scanner in = new Scanner(new BufferedInputStream(System.in));\n    int n = in.nextInt();\n    int[][] m = new int[n][2];\n    for (int i = 0; i < n; i++) {\n      m[i][0] = in.nextInt();\n      m[i][1] = in.nextInt();\n    }\n    System.out.println(new Solution().minimumRooms(m));\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n  int minimumRooms(vector<array<int, 2>> m) { /* TODO: implement the interview solution. */\n    return 0;\n  }\n};\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int n;\n  cin >> n;\n  vector<array<int, 2>> m(n);\n  for (auto &x : m)\n    cin >> x[0] >> x[1];\n  cout << Solution().minimumRooms(m) << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def minimum_rooms(self, meetings: list[tuple[int, int]]) -> int:\n    # TODO: return the maximum number of overlapping meetings.\n    return 0\n\ndef main() -> None:\n  data = list(map(int, sys.stdin.buffer.read().split()))\n  n = data[0]\n  meetings = [(data[i], data[i + 1]) for i in range(1, 2 * n + 1, 2)]\n  print(Solution().minimum_rooms(meetings))\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "3\n0 30\n5 10\n15 20\n",
+        "expectedOutput": "2\n",
+        "explanation": "At most two meetings overlap."
+      },
+      {
+        "input": "2\n7 10\n10 12\n",
+        "expectedOutput": "1\n",
+        "explanation": "Half-open intervals can reuse the room at ten."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "1\n2 3\n",
+        "expectedOutput": "1\n",
+        "explanation": "One meeting."
+      },
+      {
+        "input": "4\n1 5\n2 6\n3 7\n4 8\n",
+        "expectedOutput": "4\n",
+        "explanation": "All four overlap."
+      },
+      {
+        "input": "4\n8 9\n1 2\n4 5\n2 4\n",
+        "expectedOutput": "1\n",
+        "explanation": "Unsorted chain of non-overlap."
+      },
+      {
+        "input": "5\n0 10\n1 2\n2 3\n3 4\n4 5\n",
+        "expectedOutput": "2\n",
+        "explanation": "One long meeting overlaps a sequential series."
+      }
+    ]
+  },
+  {
+    "slug": "sliding-window-maximum",
+    "title": "Maximum Value in Every Sliding Window",
+    "difficulty": "HARD",
+    "topic": "Monotonic Deque",
+    "learningOrder": 19,
+    "companyTags": "Common product-company pattern",
+    "description": "For every contiguous window of size `k`, return its maximum value in left-to-right order. The input size rules out sorting each window independently.",
+    "constraints": "1 <= k <= n <= 200000\n-1000000000 <= value <= 1000000000",
+    "inputFormat": "Line 1: `n k`\nLine 2: `n` integers",
+    "outputFormat": "Print `n-k+1` maxima separated by spaces.",
+    "examples": "Input\n8 3\n1 3 -1 -3 5 3 6 7\nOutput\n3 3 5 5 6 7",
+    "expectedApproach": "Keep indices in a decreasing deque. Remove expired indices from the front and values no larger than the new value from the back; the front is each window maximum.",
+    "expectedTimeComplexity": "O(n)",
+    "expectedSpaceComplexity": "O(k)",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\nclass Solution {\n  public int[] windowMaximums(int[] a, int k) { /* TODO: implement the interview solution. */\n    return new int[0];\n  }\n}\npublic class Main {\n  public static void main(String[] x) {\n    Scanner in = new Scanner(new BufferedInputStream(System.in));\n    int n = in.nextInt(), k = in.nextInt();\n    int[] a = new int[n];\n    for (int i = 0; i < n; i++)\n      a[i] = in.nextInt();\n    int[] r = new Solution().windowMaximums(a, k);\n    for (int i = 0; i < r.length; i++)\n      System.out.print((i > 0 ? \" \" : \"\") + r[i]);\n    System.out.println();\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n  vector<int> windowMaximums(const vector<int> &a,\n                             int k) { /* TODO: implement the interview solution. */\n    return {};\n  }\n};\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int n, k;\n  cin >> n >> k;\n  vector<int> a(n);\n  for (int &x : a)\n    cin >> x;\n  auto r = Solution().windowMaximums(a, k);\n  for (int i = 0; i < (int)r.size(); i++)\n    cout << (i ? \" \" : \"\") << r[i];\n  cout << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def window_maximums(self, values: list[int], k: int) -> list[int]:\n    # TODO: return the maximum value in every window of size k.\n    return []\n\ndef main() -> None:\n  data = list(map(int, sys.stdin.buffer.read().split()))\n  n, k = data[:2]\n  values = data[2:2 + n]\n  print(*Solution().window_maximums(values, k))\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "8 3\n1 3 -1 -3 5 3 6 7\n",
+        "expectedOutput": "3 3 5 5 6 7\n",
+        "explanation": "Maximum for each size-three window."
+      },
+      {
+        "input": "1 1\n9\n",
+        "expectedOutput": "9\n",
+        "explanation": "One window."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "5 2\n5 4 3 2 1\n",
+        "expectedOutput": "5 4 3 2\n",
+        "explanation": "Descending input."
+      },
+      {
+        "input": "5 5\n1 8 3 7 2\n",
+        "expectedOutput": "8\n",
+        "explanation": "Window is the whole array."
+      },
+      {
+        "input": "6 3\n2 2 2 2 2 2\n",
+        "expectedOutput": "2 2 2 2\n",
+        "explanation": "Duplicate maxima."
+      },
+      {
+        "input": "7 2\n-4 -2 -5 -1 -3 -1 -6\n",
+        "expectedOutput": "-2 -2 -1 -1 -1 -1\n",
+        "explanation": "Negative values."
+      }
+    ]
+  },
+  {
+    "slug": "median-two-sorted-streams",
+    "title": "Median of Two Sorted Streams",
+    "difficulty": "HARD",
+    "topic": "Binary Search Partition",
+    "learningOrder": 20,
+    "companyTags": "Common advanced interview pattern",
+    "description": "Given two individually sorted integer arrays, return the median of their combined multiset without merging them. At least one array is non-empty. Print the answer with exactly one decimal place.",
+    "constraints": "0 <= n,m <= 200000\n1 <= n+m\nValues fit in signed 32-bit integers.\nExpected logarithmic complexity in the smaller array.",
+    "inputFormat": "Line 1: `n m`\nLine 2: `n` sorted integers (blank if n=0)\nLine 3: `m` sorted integers (blank if m=0)",
+    "outputFormat": "Print the median with one digit after the decimal point.",
+    "examples": "Input\n2 1\n1 3\n2\nOutput\n2.0",
+    "expectedApproach": "Binary-search a partition in the smaller array so left partitions contain half the elements and both left maxima are <= both right minima. Derive odd/even medians from the boundary values.",
+    "expectedTimeComplexity": "O(log(min(n,m)))",
+    "expectedSpaceComplexity": "O(1)",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\nclass Solution {\n  public double median(int[] a, int[] b) { /* TODO: implement the interview solution. */\n    return 0.0;\n  }\n}\npublic class Main {\n  public static void main(String[] x) {\n    Scanner in = new Scanner(new BufferedInputStream(System.in));\n    int n = in.nextInt(), m = in.nextInt();\n    int[] a = new int[n], b = new int[m];\n    for (int i = 0; i < n; i++)\n      a[i] = in.nextInt();\n    for (int i = 0; i < m; i++)\n      b[i] = in.nextInt();\n    System.out.printf(java.util.Locale.ROOT, \"%.1f%n\", new Solution().median(a, b));\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n  double median(const vector<int> &a,\n                const vector<int> &b) { /* TODO: implement the interview solution. */\n    return 0.0;\n  }\n};\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int n, m;\n  cin >> n >> m;\n  vector<int> a(n), b(m);\n  for (int &x : a)\n    cin >> x;\n  for (int &x : b)\n    cin >> x;\n  cout << fixed << setprecision(1) << Solution().median(a, b) << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def median(self, first: list[int], second: list[int]) -> float:\n    # TODO: return the median without fully merging both inputs.\n    return 0.0\n\ndef main() -> None:\n  data = list(map(int, sys.stdin.buffer.read().split()))\n  n, m = data[:2]\n  first = data[2:2 + n]\n  second = data[2 + n:2 + n + m]\n  print(f\"{Solution().median(first, second):.1f}\")\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "2 1\n1 3\n2\n",
+        "expectedOutput": "2.0\n",
+        "explanation": "Combined order is 1,2,3."
+      },
+      {
+        "input": "2 2\n1 2\n3 4\n",
+        "expectedOutput": "2.5\n",
+        "explanation": "Average of the two middle values."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "0 1\n\n5\n",
+        "expectedOutput": "5.0\n",
+        "explanation": "One array is empty."
+      },
+      {
+        "input": "1 2\n10\n1 2\n",
+        "expectedOutput": "2.0\n",
+        "explanation": "Partition falls around separated ranges."
+      },
+      {
+        "input": "3 4\n-5 -3 -1\n-2 0 4 9\n",
+        "expectedOutput": "-1.0\n",
+        "explanation": "Negative and positive values."
+      },
+      {
+        "input": "2 3\n1 1\n1 1 1\n",
+        "expectedOutput": "1.0\n",
+        "explanation": "Duplicates."
+      }
+    ]
+  },
+  {
+    "slug": "merge-maintenance-windows",
+    "title": "Merge Maintenance Windows",
+    "difficulty": "EASY",
+    "topic": "Intervals",
+    "learningOrder": 2,
+    "companyTags": "Common product-company pattern",
+    "description": "A deployment calendar contains inclusive maintenance windows `[start, end]`. Merge every pair that overlaps or touches and return the smallest equivalent list ordered by start time. Your method may reorder the input.",
+    "constraints": "1 <= n <= 100000\n0 <= start <= end <= 1000000000\nTouching windows, such as [1,3] and [3,5], must merge.",
+    "inputFormat": "Line 1: `n`\nNext `n` lines: `start end`",
+    "outputFormat": "Print each merged window as `start end`, one per line.",
+    "examples": "Input\n4\n1 3\n2 6\n8 10\n10 12\nOutput\n1 6\n8 12",
+    "expectedApproach": "Sort by start, retain the current merged interval, extend its end when the next start is at most the current end, and otherwise emit it.",
+    "expectedTimeComplexity": "O(n log n)",
+    "expectedSpaceComplexity": "O(n) for output",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\n\nclass Solution {\n  public int[][] mergeWindows(int[][] windows) {\n    // TODO: merge overlapping or touching windows.\n    return new int[0][0];\n  }\n}\n\npublic class Main {\n  public static void main(String[] args) throws Exception {\n    Scanner in = new Scanner(new BufferedInputStream(System.in));\n    int n = in.nextInt();\n    int[][] windows = new int[n][2];\n    for (int i = 0; i < n; i++) {\n      windows[i][0] = in.nextInt();\n      windows[i][1] = in.nextInt();\n    }\n    for (int[] window : new Solution().mergeWindows(windows))\n      System.out.println(window[0] + \" \" + window[1]);\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\n\nclass Solution {\npublic:\n  vector<array<int, 2>> mergeWindows(vector<array<int, 2>> windows) {\n    // TODO: merge overlapping or touching windows.\n    return {};\n  }\n};\n\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int n;\n  cin >> n;\n  vector<array<int, 2>> windows(n);\n  for (auto &w : windows)\n    cin >> w[0] >> w[1];\n  for (auto w : Solution().mergeWindows(windows))\n    cout << w[0] << ' ' << w[1] << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def merge_windows(self, windows: list[list[int]]) -> list[list[int]]:\n    # TODO: merge overlapping or touching windows.\n    return []\n\ndef main() -> None:\n  data = list(map(int, sys.stdin.buffer.read().split()))\n  n = data[0]\n  windows = [[data[i], data[i + 1]] for i in range(1, 2 * n + 1, 2)]\n  for start, end in Solution().merge_windows(windows):\n    print(start, end)\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "4\n1 3\n2 6\n8 10\n10 12\n",
+        "expectedOutput": "1 6\n8 12\n",
+        "explanation": "Overlap and touching are both merged."
+      },
+      {
+        "input": "1\n5 5\n",
+        "expectedOutput": "5 5\n",
+        "explanation": "A single zero-length window is unchanged."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "3\n1 2\n4 5\n9 12\n",
+        "expectedOutput": "1 2\n4 5\n9 12\n",
+        "explanation": "No overlaps."
+      },
+      {
+        "input": "4\n1 10\n2 3\n4 8\n10 11\n",
+        "expectedOutput": "1 11\n",
+        "explanation": "Nested and touching intervals."
+      },
+      {
+        "input": "3\n8 10\n1 3\n3 7\n",
+        "expectedOutput": "1 7\n8 10\n",
+        "explanation": "Input is unsorted."
+      },
+      {
+        "input": "5\n0 0\n0 1\n2 4\n4 8\n20 21\n",
+        "expectedOutput": "0 1\n2 8\n20 21\n",
+        "explanation": "Multiple merge groups."
+      }
+    ]
+  },
+  {
+    "slug": "service-build-order",
+    "title": "Lexicographically Smallest Service Build Order",
+    "difficulty": "MEDIUM",
+    "topic": "Graphs",
+    "learningOrder": 3,
+    "companyTags": "Common product-company pattern",
+    "description": "A build system knows a set of uniquely named services and dependency pairs `[service, dependency]`. Return the lexicographically smallest valid build order in which every dependency appears before its service. Duplicate dependency pairs must not change the answer. Print `IMPOSSIBLE` when a cycle prevents a complete build.",
+    "constraints": "1 <= services <= 100000\n0 <= dependency pairs <= 200000\nNames contain lowercase letters, digits, and hyphens.",
+    "inputFormat": "Line 1: `n m`\nLine 2: `n` service names\nNext `m` lines: `service dependency`",
+    "outputFormat": "Print the ordered names on one line, or `IMPOSSIBLE`.",
+    "examples": "Input\n3 2\napi auth db\napi auth\nauth db\nOutput\ndb auth api",
+    "expectedApproach": "Deduplicate edges, direct each dependency to its dependants, track indegrees, and run Kahn's algorithm with a min-heap. Fewer than n emitted services means a cycle exists.",
+    "expectedTimeComplexity": "O((V + E) log V)",
+    "expectedSpaceComplexity": "O(V + E)",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\n\nclass Solution {\n  public List<String> buildOrder(List<String> services, List<String[]> dependencies) {\n    // TODO: return the lexicographically smallest valid order.\n    return List.of();\n  }\n}\n\npublic class Main {\n  public static void main(String[] args) {\n    Scanner in = new Scanner(new BufferedInputStream(System.in));\n    int n = in.nextInt(), m = in.nextInt();\n    List<String> services = new ArrayList<>();\n    for (int i = 0; i < n; i++)\n      services.add(in.next());\n    List<String[]> deps = new ArrayList<>();\n    for (int i = 0; i < m; i++)\n      deps.add(new String[] {in.next(), in.next()});\n    List<String> answer = new Solution().buildOrder(services, deps);\n    System.out.println(answer.size() == n ? String.join(\" \", answer) : \"IMPOSSIBLE\");\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\n\nclass Solution {\npublic:\n  vector<string> buildOrder(const vector<string> &services,\n                            const vector<pair<string, string>> &dependencies) {\n    // TODO: return the lexicographically smallest valid order.\n    return {};\n  }\n};\n\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int n, m;\n  cin >> n >> m;\n  vector<string> services(n);\n  for (auto &s : services)\n    cin >> s;\n  vector<pair<string, string>> deps(m);\n  for (auto &d : deps)\n    cin >> d.first >> d.second;\n  auto answer = Solution().buildOrder(services, deps);\n  if ((int)answer.size() != n)\n    cout << \"IMPOSSIBLE\\n\";\n  else {\n    for (int i = 0; i < n; i++)\n      cout << (i ? \" \" : \"\") << answer[i];\n    cout << '\\n';\n  }\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def build_order(\n    self,\n    services: list[str],\n    dependencies: list[tuple[str, str]],\n  ) -> list[str]:\n    # TODO: return the lexicographically smallest valid order.\n    return []\n\ndef main() -> None:\n  tokens = sys.stdin.buffer.read().decode().split()\n  n, m = map(int, tokens[:2])\n  position = 2\n  services = tokens[position:position + n]\n  position += n\n  dependencies = [\n    (tokens[position + 2 * i], tokens[position + 2 * i + 1])\n    for i in range(m)\n  ]\n  answer = Solution().build_order(services, dependencies)\n  print(\" \".join(answer) if len(answer) == n else \"IMPOSSIBLE\")\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "3 2\napi auth db\napi auth\nauth db\n",
+        "expectedOutput": "db auth api\n",
+        "explanation": "Dependencies build before their services."
+      },
+      {
+        "input": "4 3\na b c d\nd b\nd c\nb a\n",
+        "expectedOutput": "a b c d\n",
+        "explanation": "The min-heap resolves valid choices lexicographically."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "3 3\na b c\na b\nb c\nc a\n",
+        "expectedOutput": "IMPOSSIBLE\n",
+        "explanation": "Cycle."
+      },
+      {
+        "input": "4 0\nz a m b\n",
+        "expectedOutput": "a b m z\n",
+        "explanation": "No dependencies means sorted order."
+      },
+      {
+        "input": "3 3\na b c\na b\na b\nc b\n",
+        "expectedOutput": "b a c\n",
+        "explanation": "Duplicate edges count once."
+      },
+      {
+        "input": "5 4\nweb api auth db cache\nweb api\napi auth\nauth db\nweb cache\n",
+        "expectedOutput": "cache db auth api web\n",
+        "explanation": "Several prerequisites."
+      }
+    ]
+  },
+  {
+    "slug": "nearest-available-server",
+    "title": "Nearest Available Server",
+    "difficulty": "MEDIUM",
+    "topic": "Breadth-First Search",
+    "learningOrder": 4,
+    "companyTags": "Common product-company pattern",
+    "description": "A data-center floor is a rectangular grid. `.` is open floor, `#` is blocked, and `S` is an available server. Starting from a given open cell, return the minimum number of orthogonal moves required to reach any server. Return `-1` when no server is reachable.",
+    "constraints": "1 <= rows * columns <= 100000\nThe start is inside the grid and is not blocked.\nMoves are up, down, left, and right.",
+    "inputFormat": "Line 1: `rows columns`\nNext `rows` lines: grid strings\nFinal line: `startRow startColumn`",
+    "outputFormat": "Print the minimum number of moves, or `-1`.",
+    "examples": "Input\n2 3\n.#S\n...\n0 0\nOutput\n4",
+    "expectedApproach": "Run BFS from the start, marking cells when enqueued. The first server removed from the queue has minimum distance because BFS processes unweighted paths by level.",
+    "expectedTimeComplexity": "O(rows * columns)",
+    "expectedSpaceComplexity": "O(rows * columns)",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\n\nclass Solution {\n  public int nearestServer(char[][] grid, int startRow, int startColumn) {\n    // TODO: breadth-first search from the start cell.\n    return -1;\n  }\n}\n\npublic class Main {\n  public static void main(String[] args) {\n    Scanner in = new Scanner(new BufferedInputStream(System.in));\n    int rows = in.nextInt(), cols = in.nextInt();\n    char[][] grid = new char[rows][];\n    for (int r = 0; r < rows; r++)\n      grid[r] = in.next().toCharArray();\n    int sr = in.nextInt(), sc = in.nextInt();\n    System.out.println(new Solution().nearestServer(grid, sr, sc));\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n  int nearestServer(const vector<string> &grid, int sr,\n                    int sc) { /* TODO: implement the interview solution. */\n    return -1;\n  }\n};\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int r, c;\n  cin >> r >> c;\n  vector<string> g(r);\n  for (auto &s : g)\n    cin >> s;\n  int sr, sc;\n  cin >> sr >> sc;\n  cout << Solution().nearestServer(g, sr, sc) << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def nearest_server(self, grid: list[str], start_row: int, start_column: int) -> int:\n    # TODO: breadth-first search from the start cell.\n    return -1\n\ndef main() -> None:\n  lines = sys.stdin.read().splitlines()\n  rows, _columns = map(int, lines[0].split())\n  grid = lines[1:1 + rows]\n  start_row, start_column = map(int, lines[1 + rows].split())\n  print(Solution().nearest_server(grid, start_row, start_column))\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "2 3\n.#S\n...\n0 0\n",
+        "expectedOutput": "4\n",
+        "explanation": "The wall forces a route around the lower row."
+      },
+      {
+        "input": "1 1\nS\n0 0\n",
+        "expectedOutput": "0\n",
+        "explanation": "The start is already a server."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "3 3\n.#S\n###\nS..\n2 2\n",
+        "expectedOutput": "2\n",
+        "explanation": "Only the lower server is reachable."
+      },
+      {
+        "input": "3 3\n.#S\n###\n...\n2 0\n",
+        "expectedOutput": "-1\n",
+        "explanation": "No server is reachable."
+      },
+      {
+        "input": "3 4\n....\n.##S\nS...\n0 1\n",
+        "expectedOutput": "3\n",
+        "explanation": "Nearest of multiple servers."
+      },
+      {
+        "input": "1 6\n.....S\n0 0\n",
+        "expectedOutput": "5\n",
+        "explanation": "Straight path."
+      }
+    ]
+  },
+  {
+    "slug": "capacity-before-deadline",
+    "title": "Minimum Processing Capacity Before Deadline",
+    "difficulty": "MEDIUM",
+    "topic": "Binary Search on Answer",
+    "learningOrder": 5,
+    "companyTags": "Common product-company pattern",
+    "description": "Jobs must be processed in their given order. Each day, a worker handles a consecutive group whose total size does not exceed a fixed daily capacity; a job cannot be split. Return the smallest capacity that finishes all jobs within `days` days.",
+    "constraints": "1 <= n <= 50000\n1 <= jobSize[i] <= 50000\n1 <= days <= n",
+    "inputFormat": "Line 1: `n days`\nLine 2: `n` positive job sizes",
+    "outputFormat": "Print the minimum feasible capacity.",
+    "examples": "Input\n10 5\n1 2 3 4 5 6 7 8 9 10\nOutput\n15",
+    "expectedApproach": "Binary-search between the largest job and the sum of all jobs. A greedy scan computes required days for a candidate capacity; feasibility is monotonic.",
+    "expectedTimeComplexity": "O(n log(sum(jobSize)))",
+    "expectedSpaceComplexity": "O(1)",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\nclass Solution {\n  public long minimumCapacity(int[] jobs, int days) { /* TODO: implement the interview solution. */\n    return 0;\n  }\n}\npublic class Main {\n  public static void main(String[] a) {\n    Scanner in = new Scanner(new BufferedInputStream(System.in));\n    int n = in.nextInt(), d = in.nextInt();\n    int[] jobs = new int[n];\n    for (int i = 0; i < n; i++)\n      jobs[i] = in.nextInt();\n    System.out.println(new Solution().minimumCapacity(jobs, d));\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n  long long minimumCapacity(const vector<int> &jobs,\n                            int days) { /* TODO: implement the interview solution. */\n    return 0;\n  }\n};\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int n, d;\n  cin >> n >> d;\n  vector<int> a(n);\n  for (int &x : a)\n    cin >> x;\n  cout << Solution().minimumCapacity(a, d) << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def minimum_capacity(self, jobs: list[int], days: int) -> int:\n    # TODO: return the smallest capacity that meets the deadline.\n    return 0\n\ndef main() -> None:\n  data = list(map(int, sys.stdin.buffer.read().split()))\n  n, days = data[:2]\n  jobs = data[2:2 + n]\n  print(Solution().minimum_capacity(jobs, days))\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "10 5\n1 2 3 4 5 6 7 8 9 10\n",
+        "expectedOutput": "15\n",
+        "explanation": "Capacity 15 is the smallest five-day schedule."
+      },
+      {
+        "input": "3 3\n7 2 5\n",
+        "expectedOutput": "7\n",
+        "explanation": "With one day per job, the maximum job determines capacity."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "3 1\n7 2 5\n",
+        "expectedOutput": "14\n",
+        "explanation": "One day requires the total."
+      },
+      {
+        "input": "6 3\n3 2 2 4 1 4\n",
+        "expectedOutput": "6\n",
+        "explanation": "Classic boundary case."
+      },
+      {
+        "input": "5 2\n5 5 5 5 5\n",
+        "expectedOutput": "15\n",
+        "explanation": "Three jobs must fit on one day."
+      },
+      {
+        "input": "1 1\n50000\n",
+        "expectedOutput": "50000\n",
+        "explanation": "Single job."
+      }
+    ]
+  },
+  {
+    "slug": "merge-sorted-log-shards",
+    "title": "Merge Sorted Log Shards",
+    "difficulty": "MEDIUM",
+    "topic": "Heap",
+    "learningOrder": 6,
+    "companyTags": "Common product-company pattern",
+    "description": "Each server shard returns timestamps in ascending order. Merge all shards into one ascending sequence without first concatenating and globally sorting every value. Empty shards are valid and duplicate timestamps must be preserved.",
+    "constraints": "0 <= k <= 10000\nTotal timestamps <= 200000\nEvery shard is sorted ascending.",
+    "inputFormat": "Line 1: `k`\nNext `k` lines: `length value1 value2 ...`",
+    "outputFormat": "Print merged timestamps separated by spaces. Print an empty line when there are none.",
+    "examples": "Input\n3\n3 1 7 9\n2 2 4\n2 3 8\nOutput\n1 2 3 4 7 8 9",
+    "expectedApproach": "Push the first value from each non-empty shard into a min-heap with its shard and offset. Pop the minimum and push the next value from that shard.",
+    "expectedTimeComplexity": "O(N log k)",
+    "expectedSpaceComplexity": "O(k) excluding output",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\nclass Solution {\n  public List<Integer>\n  mergeShards(List<List<Integer>> shards) { /* TODO: implement the interview solution. */\n    return List.of();\n  }\n}\npublic class Main {\n  public static void main(String[] x) {\n    Scanner in = new Scanner(new BufferedInputStream(System.in));\n    int k = in.nextInt();\n    List<List<Integer>> s = new ArrayList<>();\n    for (int i = 0; i < k; i++) {\n      int n = in.nextInt();\n      List<Integer> a = new ArrayList<>();\n      for (int j = 0; j < n; j++)\n        a.add(in.nextInt());\n      s.add(a);\n    }\n    List<Integer> r = new Solution().mergeShards(s);\n    for (int i = 0; i < r.size(); i++)\n      System.out.print((i > 0 ? \" \" : \"\") + r.get(i));\n    System.out.println();\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n  vector<int>\n  mergeShards(const vector<vector<int>> &s) { /* TODO: implement the interview solution. */\n    return {};\n  }\n};\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int k;\n  cin >> k;\n  vector<vector<int>> s(k);\n  for (auto &a : s) {\n    int n;\n    cin >> n;\n    a.resize(n);\n    for (int &x : a)\n      cin >> x;\n  }\n  auto r = Solution().mergeShards(s);\n  for (int i = 0; i < (int)r.size(); i++)\n    cout << (i ? \" \" : \"\") << r[i];\n  cout << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def merge_shards(self, shards: list[list[int]]) -> list[int]:\n    # TODO: merge all sorted shards into one sorted sequence.\n    return []\n\ndef main() -> None:\n  data = list(map(int, sys.stdin.buffer.read().split()))\n  shard_count = data[0]\n  position = 1\n  shards = []\n  for _ in range(shard_count):\n    length = data[position]\n    position += 1\n    shards.append(data[position:position + length])\n    position += length\n  print(*Solution().merge_shards(shards))\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "3\n3 1 7 9\n2 2 4\n2 3 8\n",
+        "expectedOutput": "1 2 3 4 7 8 9\n",
+        "explanation": "All three sorted streams are merged."
+      },
+      {
+        "input": "3\n0\n2 1 1\n0\n",
+        "expectedOutput": "1 1\n",
+        "explanation": "Empty shards and duplicates."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "0\n",
+        "expectedOutput": "\n",
+        "explanation": "No shards."
+      },
+      {
+        "input": "1\n4 -3 0 5 9\n",
+        "expectedOutput": "-3 0 5 9\n",
+        "explanation": "One shard."
+      },
+      {
+        "input": "4\n2 1 10\n3 2 3 4\n1 5\n2 6 7\n",
+        "expectedOutput": "1 2 3 4 5 6 7 10\n",
+        "explanation": "Different shard lengths."
+      },
+      {
+        "input": "3\n3 1 2 3\n3 1 2 3\n3 1 2 3\n",
+        "expectedOutput": "1 1 1 2 2 2 3 3 3\n",
+        "explanation": "Duplicates across shards."
+      }
+    ]
+  },
+  {
+    "slug": "bounded-request-deduplicator",
+    "title": "Bounded Request Deduplicator",
+    "difficulty": "HARD",
+    "topic": "Hashing and Queue",
+    "learningOrder": 7,
+    "companyTags": "Common infrastructure interview pattern",
+    "description": "Events `[requestId, timestamp]` arrive in non-decreasing timestamp order. Accept an event unless the same ID was accepted less than `windowSeconds` earlier. Rejected duplicates do not extend the window. Return one decision per event while evicting old state so memory is bounded by the active window.",
+    "constraints": "1 <= windowSeconds <= 86400\n1 <= events <= 200000\nIDs contain no whitespace and have at most 100 characters.\nTimestamps are non-negative and non-decreasing.",
+    "inputFormat": "Line 1: `windowSeconds eventCount`\nNext lines: `requestId timestamp`",
+    "outputFormat": "Print `true` or `false` for every event on one line, separated by spaces.",
+    "examples": "Input\n10 3\na 1\na 5\na 11\nOutput\ntrue false true",
+    "expectedApproach": "Store the latest accepted timestamp per ID plus a queue of accepted records. Evict records with timestamp <= current-window only if the map still points to that record, then decide and optionally append.",
+    "expectedTimeComplexity": "O(n) total, amortized O(1) per event",
+    "expectedSpaceComplexity": "O(w) active accepted IDs",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\nclass Solution {\n  public List<Boolean> accepted(int window, List<String> ids,\n                                List<Integer> times) { /* TODO: implement the interview solution. */\n    return List.of();\n  }\n}\npublic class Main {\n  public static void main(String[] z) {\n    Scanner in = new Scanner(new BufferedInputStream(System.in));\n    int w = in.nextInt(), n = in.nextInt();\n    List<String> ids = new ArrayList<>();\n    List<Integer> t = new ArrayList<>();\n    for (int i = 0; i < n; i++) {\n      ids.add(in.next());\n      t.add(in.nextInt());\n    }\n    List<Boolean> r = new Solution().accepted(w, ids, t);\n    for (int i = 0; i < r.size(); i++)\n      System.out.print((i > 0 ? \" \" : \"\") + r.get(i));\n    System.out.println();\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n  vector<bool> accepted(int w, const vector<string> &ids,\n                        const vector<int> &t) { /* TODO: implement the interview solution. */\n    return {};\n  }\n};\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int w, n;\n  cin >> w >> n;\n  vector<string> ids(n);\n  vector<int> t(n);\n  for (int i = 0; i < n; i++)\n    cin >> ids[i] >> t[i];\n  auto r = Solution().accepted(w, ids, t);\n  for (int i = 0; i < (int)r.size(); i++)\n    cout << (i ? \" \" : \"\") << (r[i] ? \"true\" : \"false\");\n  cout << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def accepted(self, window: int, events: list[tuple[str, int]]) -> list[bool]:\n    # TODO: mark whether each request should be accepted.\n    return []\n\ndef main() -> None:\n  tokens = sys.stdin.buffer.read().decode().split()\n  window, count = map(int, tokens[:2])\n  events = [\n    (tokens[2 + 2 * i], int(tokens[3 + 2 * i]))\n    for i in range(count)\n  ]\n  result = Solution().accepted(window, events)\n  print(*(str(value).lower() for value in result))\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "10 3\na 1\na 5\na 11\n",
+        "expectedOutput": "true false true\n",
+        "explanation": "The rejected event at five does not extend the window."
+      },
+      {
+        "input": "3 4\na 0\nb 1\na 3\nb 3\n",
+        "expectedOutput": "true true true false\n",
+        "explanation": "IDs have independent windows; equality is accepted."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "5 1\nx 100\n",
+        "expectedOutput": "true\n",
+        "explanation": "First occurrence."
+      },
+      {
+        "input": "5 5\nx 0\nx 1\nx 2\nx 5\nx 9\n",
+        "expectedOutput": "true false false true false\n",
+        "explanation": "Only accepted timestamps matter."
+      },
+      {
+        "input": "1 4\na 0\na 1\na 2\na 3\n",
+        "expectedOutput": "true true true true\n",
+        "explanation": "Boundary equality."
+      },
+      {
+        "input": "10 6\na 1\nb 2\nc 3\na 12\nb 12\nc 12\n",
+        "expectedOutput": "true true true true true false\n",
+        "explanation": "c at 12 is nine seconds after acceptance."
+      }
+    ]
+  },
+  {
+    "slug": "weighted-cache-eviction",
+    "title": "Weighted LRU Cache",
+    "difficulty": "HARD",
+    "topic": "Data Structure Design",
+    "learningOrder": 8,
+    "companyTags": "Common senior backend interview pattern",
+    "description": "Implement an LRU cache whose capacity is total weight, not item count. `GET key` returns the value or `-1` and promotes a hit. `PUT key value weight` inserts or replaces an entry, then evicts least-recently-used entries until total weight fits. An entry heavier than the full capacity must not be stored.",
+    "constraints": "1 <= capacity <= 1000000\n1 <= operations <= 200000\nKeys and values are integers.\n1 <= weight <= 1000000\nAverage GET and metadata updates should be O(1).",
+    "inputFormat": "Line 1: `capacity operationCount`\nThen `GET key` or `PUT key value weight`",
+    "outputFormat": "Print one line for every GET result.",
+    "examples": "Input\n5 4\nPUT 1 10 3\nPUT 2 20 3\nGET 1\nGET 2\nOutput\n-1\n20",
+    "expectedApproach": "Combine a hash map with a doubly linked list ordered by recency. Track total weight, unlink replacements, reject overweight entries, and evict from the tail until within capacity.",
+    "expectedTimeComplexity": "O(1) average per GET; amortized O(1) per PUT plus evictions",
+    "expectedSpaceComplexity": "O(n)",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\nclass WeightedLruCache {\n  public WeightedLruCache(int capacity) { /* TODO: implement the interview solution. */ }\n  public int get(int key) { /* TODO: implement the interview solution. */ return -1; }\n  public void put(int key, int value, int weight) { /* TODO: implement the interview solution. */ }\n}\npublic class Main {\n  public static void main(String[] x) {\n    Scanner in = new Scanner(new BufferedInputStream(System.in));\n    WeightedLruCache c = new WeightedLruCache(in.nextInt());\n    int q = in.nextInt();\n    while (q-- > 0) {\n      String op = in.next();\n      int k = in.nextInt();\n      if (op.equals(\"GET\"))\n        System.out.println(c.get(k));\n      else\n        c.put(k, in.nextInt(), in.nextInt());\n    }\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\nclass WeightedLruCache {\npublic:\n  explicit WeightedLruCache(int capacity) { /* TODO: implement the interview solution. */ }\n  int get(int key) { /* TODO: implement the interview solution. */ return -1; }\n  void put(int key, int value, int weight) { /* TODO: implement the interview solution. */ }\n};\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int cap, q;\n  cin >> cap >> q;\n  WeightedLruCache c(cap);\n  while (q--) {\n    string op;\n    int k;\n    cin >> op >> k;\n    if (op == \"GET\")\n      cout << c.get(k) << '\\n';\n    else {\n      int v, w;\n      cin >> v >> w;\n      c.put(k, v, w);\n    }\n  }\n}\n",
+      "python": "import sys\n\nclass WeightedLruCache:\n  def __init__(self, capacity: int):\n    # TODO: initialize the weighted LRU cache.\n    pass\n\n  def get(self, key: int) -> int:\n    # TODO: return the value and mark the entry as recently used.\n    return -1\n\n  def put(self, key: int, value: int, weight: int) -> None:\n    # TODO: insert or update the entry, then evict as required.\n    pass\n\ndef main() -> None:\n  lines = sys.stdin.read().splitlines()\n  capacity, operation_count = map(int, lines[0].split())\n  cache = WeightedLruCache(capacity)\n  for line in lines[1:1 + operation_count]:\n    parts = line.split()\n    if parts[0] == \"GET\":\n      print(cache.get(int(parts[1])))\n    else:\n      cache.put(*map(int, parts[1:]))\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "5 4\nPUT 1 10 3\nPUT 2 20 3\nGET 1\nGET 2\n",
+        "expectedOutput": "-1\n20\n",
+        "explanation": "Adding key two evicts key one."
+      },
+      {
+        "input": "5 5\nPUT 1 10 3\nPUT 2 20 2\nGET 1\nPUT 3 30 3\nGET 2\n",
+        "expectedOutput": "10\n-1\n",
+        "explanation": "GET promotes key one, so key two is evicted."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "3 2\nPUT 1 10 4\nGET 1\n",
+        "expectedOutput": "-1\n",
+        "explanation": "Overweight items are rejected."
+      },
+      {
+        "input": "5 4\nPUT 1 10 2\nPUT 1 11 5\nGET 1\nGET 2\n",
+        "expectedOutput": "11\n-1\n",
+        "explanation": "Replacement updates value and weight."
+      },
+      {
+        "input": "5 6\nPUT 1 10 2\nPUT 2 20 2\nPUT 3 30 1\nGET 1\nPUT 4 40 3\nGET 2\n",
+        "expectedOutput": "10\n-1\n",
+        "explanation": "Recency determines repeated eviction."
+      },
+      {
+        "input": "1 5\nGET 9\nPUT 9 90 1\nGET 9\nPUT 8 80 1\nGET 9\n",
+        "expectedOutput": "-1\n90\n-1\n",
+        "explanation": "Capacity one."
+      }
+    ]
+  },
+  {
+    "slug": "pair-sum-indices",
+    "title": "Earliest Pair Matching a Target",
+    "difficulty": "EASY",
+    "topic": "Arrays and Hashing",
+    "learningOrder": 9,
+    "companyTags": "Common screening-round pattern",
+    "description": "Return indices `i j` (`i < j`) whose values sum to `target`. Exactly one answer exists. If duplicates permit several answers, choose the pair with the smallest `j`; for that `j`, choose the smallest `i`.",
+    "constraints": "2 <= n <= 200000\n-1000000000 <= value,target <= 1000000000\nExactly one answer exists under the tie rule.",
+    "inputFormat": "Line 1: `n target`\nLine 2: `n` integers",
+    "outputFormat": "Print `i j` using zero-based indices.",
+    "examples": "Input\n4 9\n2 7 11 15\nOutput\n0 1",
+    "expectedApproach": "Scan left to right while storing the first index for each value. Before inserting the current value, look up target-current. The first match gives the smallest j and retained first index gives the smallest i.",
+    "expectedTimeComplexity": "O(n)",
+    "expectedSpaceComplexity": "O(n)",
+    "starters": {
+      "java": "import java.io.*;\nimport java.util.*;\nclass Solution {\n  public int[] pairSum(int[] values, int target) { /* TODO: implement the interview solution. */\n    return new int[0];\n  }\n}\npublic class Main {\n  public static void main(String[] x) {\n    Scanner in = new Scanner(new BufferedInputStream(System.in));\n    int n = in.nextInt(), t = in.nextInt();\n    int[] a = new int[n];\n    for (int i = 0; i < n; i++)\n      a[i] = in.nextInt();\n    int[] r = new Solution().pairSum(a, t);\n    System.out.println(r[0] + \" \" + r[1]);\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n  pair<int, int> pairSum(const vector<int> &a,\n                         int target) { /* TODO: implement the interview solution. */\n    return {-1, -1};\n  }\n};\nint main() {\n  ios::sync_with_stdio(false);\n  cin.tie(nullptr);\n  int n, t;\n  cin >> n >> t;\n  vector<int> a(n);\n  for (int &x : a)\n    cin >> x;\n  auto r = Solution().pairSum(a, t);\n  cout << r.first << ' ' << r.second << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def pair_sum(self, values: list[int], target: int) -> tuple[int, int]:\n    # TODO: return the required pair of indices, or (-1, -1).\n    return (-1, -1)\n\ndef main() -> None:\n  data = list(map(int, sys.stdin.buffer.read().split()))\n  n, target = data[:2]\n  values = data[2:2 + n]\n  print(*Solution().pair_sum(values, target))\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "4 9\n2 7 11 15\n",
+        "expectedOutput": "0 1\n",
+        "explanation": "2 + 7 = 9."
+      },
+      {
+        "input": "3 6\n3 3 9\n",
+        "expectedOutput": "0 1\n",
+        "explanation": "Duplicate values use distinct indices."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "5 0\n-3 4 3 90 0\n",
+        "expectedOutput": "0 2\n",
+        "explanation": "Negative complement."
+      },
+      {
+        "input": "5 8\n1 7 4 4 2\n",
+        "expectedOutput": "0 1\n",
+        "explanation": "Earliest right index wins."
+      },
+      {
+        "input": "2 -10\n-4 -6\n",
+        "expectedOutput": "0 1\n",
+        "explanation": "Two negatives."
+      },
+      {
+        "input": "6 5\n1 1 1 4 4 4\n",
+        "expectedOutput": "0 3\n",
+        "explanation": "First occurrence of complement."
+      }
+    ]
+  },
+  {
+    "slug": "balanced-delimiters",
+    "title": "Validate Nested Delimiters",
+    "difficulty": "EASY",
+    "topic": "Stack",
+    "learningOrder": 10,
+    "companyTags": "Common screening-round pattern",
+    "description": "Given a non-empty string containing only `()[]{}`, return whether every opening delimiter is closed by the correct type in the correct nesting order.",
+    "constraints": "1 <= length <= 200000\nCharacters are only parentheses, brackets, and braces.",
+    "inputFormat": "One line containing the delimiter string.",
+    "outputFormat": "Print `true` or `false`.",
+    "examples": "Input\n{[()]}\nOutput\ntrue",
+    "expectedApproach": "Push opening delimiters. For a closing delimiter, the stack must be non-empty and its top must be the matching opener. The stack must be empty at the end.",
+    "expectedTimeComplexity": "O(n)",
+    "expectedSpaceComplexity": "O(n)",
+    "starters": {
+      "java": "import java.io.*;\nclass Solution {\n  public boolean isBalanced(String text) { /* TODO: implement the interview solution. */\n    return false;\n  }\n}\npublic class Main {\n  public static void main(String[] x) throws Exception {\n    String s = new BufferedReader(new InputStreamReader(System.in)).readLine();\n    System.out.println(new Solution().isBalanced(s));\n  }\n}\n",
+      "cpp": "#include <algorithm>\n#include <array>\n#include <climits>\n#include <cmath>\n#include <deque>\n#include <functional>\n#include <iomanip>\n#include <iostream>\n#include <list>\n#include <map>\n#include <queue>\n#include <set>\n#include <sstream>\n#include <string>\n#include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\nusing namespace std;\nclass Solution {\npublic:\n  bool isBalanced(const string &s) { /* TODO: implement the interview solution. */ return false; }\n};\nint main() {\n  string s;\n  cin >> s;\n  cout << (Solution().isBalanced(s) ? \"true\" : \"false\") << '\\n';\n}\n",
+      "python": "import sys\n\nclass Solution:\n  def is_balanced(self, text: str) -> bool:\n    # TODO: return whether every delimiter is correctly matched.\n    return False\n\ndef main() -> None:\n  text = sys.stdin.readline().strip()\n  print(str(Solution().is_balanced(text)).lower())\n\nif __name__ == \"__main__\":\n  main()\n"
+    },
+    "publicTests": [
+      {
+        "input": "{[()]}\n",
+        "expectedOutput": "true\n",
+        "explanation": "All types close in reverse order."
+      },
+      {
+        "input": "([)]\n",
+        "expectedOutput": "false\n",
+        "explanation": "Types cross rather than nest."
+      }
+    ],
+    "hiddenTests": [
+      {
+        "input": "(\n",
+        "expectedOutput": "false\n",
+        "explanation": "Unclosed opener."
+      },
+      {
+        "input": "()[]{}\n",
+        "expectedOutput": "true\n",
+        "explanation": "Sequential pairs."
+      },
+      {
+        "input": "}\n",
+        "expectedOutput": "false\n",
+        "explanation": "Closing without opener."
+      },
+      {
+        "input": "(((((())))))\n",
+        "expectedOutput": "true\n",
+        "explanation": "Deep nesting."
+      }
+    ]
+  }
+]

@@ -1,0 +1,52 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:preppilot;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+    locations: classpath:db/test-migration
+
+app:
+  auth:
+    otp-ttl: 10m
+    session-ttl: 7d
+    max-otp-attempts: 5
+    expose-dev-otp: true
+    token-pepper: test-pepper
+    rate-limit:
+      resend-cooldown: 60s
+      email-window: 15m
+      max-requests-per-email: 5
+      ip-window: 15m
+      max-requests-per-ip: 100
+    cookie:
+      name: preppilot_session
+      secure: false
+      same-site: Strict
+  web:
+    allowed-origins:
+      - http://localhost:5173
+  mail:
+    enabled: false
+    provider: smtp
+    from: PrepPilot <no-reply@example.com>
+  runner:
+    enabled: false
+    worker-token:
+    daily-run-limit: 5
+    minimum-run-interval: 1ms
+    lease-duration: 60s
+    max-attempts: 3
+    email-results: false
+    maximum-diagnostic-characters: 4000
+    maximum-output-characters: 32768
+
+clients:
+  leetcode:
+    base-url: http://localhost:9999

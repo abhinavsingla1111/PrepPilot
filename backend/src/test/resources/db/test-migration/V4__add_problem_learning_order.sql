@@ -1,0 +1,2 @@
+ALTER TABLE problem
+    ADD COLUMN learning_order INTEGER NOT NULL DEFAULT 0;
