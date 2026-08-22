@@ -20,7 +20,7 @@ services:
         value: "8080"
       # SerialGC keeps the heap footprint small enough for the free 512 MB plan.
       - key: JAVA_TOOL_OPTIONS
-        value: -XX:+UseSerialG
+        value: -XX:+UseSerialGC
 
       # -- Neon PostgreSQL (fill in the dashboard) ---
       # DATABASE_URL example: jdbc: postgresql: //<host>/<db>?sslmode=require
