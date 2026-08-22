@@ -25,11 +25,10 @@ services:
       # -- Neon PostgreSQL (fill in the dashboard) ---
       # DATABASE_URL example: jdbc: postgresql: //<host>/<db>?sslmode=require
       - key: DATABASE_URL
-        value: ${DATABASE_URL}
+        sync: false
       - key: DATABASE_USERNAME
-        value: ${DATABASE_USERNAME}
+        sync: false
       - key: DATABASE_PASSWORD
-        value: ${DATABASE_PASSWORD}
         sync: false
 
       # -- Auth / session ---
@@ -45,10 +44,8 @@ services:
       # -- Public URL / proxy handling
       # Set both to your Vercel URL, e. g. https://preppilot.vercel.app
       - key: ALLOWED_ORIGINS
-        value: ${ALLOWED_ORIGINS}
         sync: false
       - key: APP_PUBLIC_URL
-        value: ${APP_PUBLIC_URL}
         sync: false
       - key: FORWARD_HEADERS_STRATEGY
         value: FRAMEWORK
