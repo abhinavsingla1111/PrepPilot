@@ -7,7 +7,7 @@ services:
     runtime: docker
     plan: free
     region: oregon
-    dockerfilePath: •/Dockerfile.api
+    dockerfilePath: ./Dockerfile.api
     # Build context is the repo root so backend/ and the seed CSV are available.
     dockerContext: .
     healthCheckPath: /actuator/health/readiness
