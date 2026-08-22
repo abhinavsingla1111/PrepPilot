@@ -6,11 +6,11 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://REPLACE-WITH-RENDER-HOST.onrender.com/api/$1"
+      "destination": "https://preppilot-api-p54e.onrender.com/api/$1"
     },
     {
       "source": "/actuator/(.*)",
-      "destination": "https://REPLACE-WITH-RENDER-HOST.onrender.com/actuator/$1"
+      "destination": "https://preppilot-api-p54e.onrender.com/actuator/$1"
     }
   ]
 }
