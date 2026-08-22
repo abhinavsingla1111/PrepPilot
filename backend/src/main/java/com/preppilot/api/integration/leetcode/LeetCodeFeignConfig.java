@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.concurrent.TimeUnit;
 
-@Configuration(proxyBeanMethods = false)
 public class LeetCodeFeignConfig {
 
     @Bean
