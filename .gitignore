@@ -30,6 +30,7 @@ coverage/
 .env.*
 !.env.example
 *.pem
+.secrets
 
 # ---- Logs ----
 *.log

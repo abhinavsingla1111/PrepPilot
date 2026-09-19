@@ -1,0 +1,11 @@
+preppilot.duckdns.org {
+	handle /api/* {
+		reverse_proxy api:8080
+	}
+	handle /actuator/* {
+		respond "Not found" 404
+	}
+	handle {
+		reverse_proxy web:80
+	}
+}
