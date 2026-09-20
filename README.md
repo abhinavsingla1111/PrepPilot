@@ -1,4 +1,5 @@
 # PrepPilot
+## Try it out here: [PrepPilot](https://preppilot.duckdns.org/)
 
 PrepPilot is a focused coding-interview workspace: structured Fundamentals, a curated DSA library, end-to-end system-design notes, passwordless sign-in, personal progress tracking, timed knowledge checks, scheduled revision, and a coding Interview Lab.
 
