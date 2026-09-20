@@ -163,5 +163,3 @@ Run these after changing images, Podman flags, or the sandbox script:
 - outbound DNS and HTTP connection attempts;
 - worker termination after claim, followed by lease recovery;
 - duplicate completion and an invalid worker/lease token.
-
-Deployment instructions are in [OCI_FREE_DEPLOYMENT.md](OCI_FREE_DEPLOYMENT.md).
