@@ -97,19 +97,19 @@ a {
   letter-spacing: -0.04em;
 }
 
-.brand > span:last-child > span {
-  color: var(--green);
+.brand-name{
+  color: rgba(var(--accent-blue));
 }
 
-.brand-mark {
+.brand .brand-mark {
   width: 34px;
   height: 34px;
   display: grid;
   place-items: center;
-  color: #11150e;
+  color: #071218;
   border-radius: 9px;
-  background: var(--green);
-  box-shadow: 0 0 24px rgba(var(--accent-rgb), 0.12);
+  background: #2997ff;
+  box-shadow: 0 0 24px rgba(41, 151, 255, 0.12);
 }
 
 .header-nav-wrap,
